@@ -1,2 +1,4 @@
 # copier-python-template
-Copier template for my python projects 
+
+[Copier](https://copier.readthedocs.io/en/stable/) template for my python projects.
+
