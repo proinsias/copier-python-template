@@ -1,0 +1,5 @@
+_exclude:
+  - /.git
+  - copier.yml
+  - LICENSE
+  - README.md
