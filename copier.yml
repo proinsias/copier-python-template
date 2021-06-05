@@ -25,6 +25,13 @@ _skip_if_exists:
 # _tasks:
 #   - git init
 #   - python _copier_post_generation.py
+#   # Initialize poetry and git
+#   - git log &>/dev/null || poetry lock -q
+#   - git log &>/dev/null || poetry show --tree | grep '^\w' | awk '{ print $1 }' | sed 's/$/@latest/' | xargs poetry add -Dq
+#   - git log &>/dev/null || git init
+#   - git log &>/dev/null || git add --all
+#   - git log &>/dev/null || git commit -qm 'initial commit'
+#   - git log &>/dev/null || echo gh repo create -y {{repo_username}}/{{repo_name}} {% if private %}--private{% else %}--public{% endif %}
 
 # ====== QUESTIONS ======
 project_name:
@@ -74,3 +81,7 @@ doc_dir:
   type: str
   help: Relative path to the documentation source file directory. Default is "docs/"
   default: docs/
+
+docker:
+  type: bool
+  default: False

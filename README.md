@@ -25,6 +25,7 @@ structure and configuration.
 
 ## Thanks to
 
+- [branchvincent/python-template](https://github.com/branchvincent/python-template/)
 - [KyleKing/calcipy_template](https://github.com/KyleKing/calcipy_template/).
 - [Tecnativa/doodba-copier-template](https://github.com/Tecnativa/doodba-copier-template/).
 
@@ -52,9 +53,7 @@ FIXME: Update below.
 Add questions about whether to add in certain files so I don't have to
 keep manually deleting this?
 
-<https://github.com/app-generator/copier-jinja>
-<https://github.com/app-generator/copier-jinja-demo>
-<https://github.com/branchvincent/python-template>
+
 <https://github.com/Cecron/copier-python>
 <https://github.com/copier-org/autopretty>
 <https://github.com/eliostvs/tomate-plugin-template>

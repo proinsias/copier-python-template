@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+set -o errexit   # Exit on error. Append || true if you expect an error.
+set -o noclobber # Don't allow overwriting files.
+set -o nounset   # Don't allow use of undefined vars. Use ${VAR:-} to use an undefined VAR.
+
+umask 0000 # Make sure all users on host machine can access the files produced by the container.
+
+if test $# -gt 0; then
+    # Run the following to enter the container machine:
+    # `docker-compose run --service-ports ds bash`
+    exec "$@"
+else
+    exec ./bin/start-jupyter.sh
+fi

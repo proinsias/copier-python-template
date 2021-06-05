@@ -1,0 +1,89 @@
+FROM ubuntu:20.04
+# https://github.com/tianon/docker-brew-ubuntu-core/blob/74249faf47098bef2cedad89696bfd1ed521e019/focal/Dockerfile
+
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+
+# hadolint ignore=DL3008
+RUN \
+    DEBIAN_FRONTEND="noninteractive" && \
+    export DEBIAN_FRONTEND && \
+    apt-get update --yes && \
+    apt-get install --auto-remove --no-install-recommends --yes \
+        ccache  `# Speed up gcc/g++ functionality.` \
+    shellcheck `# Shell script linter` \
+    && \
+    /usr/sbin/update-ccache-symlinks && \
+    apt-get clean && \
+    rm --recursive --force \
+        /var/cache/* \
+        /var/lib/apt/lists/* \
+        /var/log/* \
+    && \
+    curl --fail --location --show-error --silent \
+        "https://github.com/hadolint/hadolint/releases/download/v1.17.4/hadolint-Linux-x86_64" \
+        --output /usr/local/bin/hadolint && \
+    chmod +x /usr/local/bin/hadolint && \
+    `# https://pyup.io/posts/patched-vulnerability/` \
+    curl --fail --location --show-error --silent \
+        "https://github.com/pyupio/safety/releases/download/1.8.7/safety-linux-x86_64" \
+        --output /usr/local/bin/safety && \
+    chmod +x /usr/local/bin/safety
+
+ENV APP_DIR="/app" \
+    PATH="/usr/lib/ccache${PATH:+:${PATH}}"
+
+RUN \
+    ccache --version && \
+    hadolint --version && \
+    safety --version && \
+    shellcheck --version
+
+COPY ./bin/*.sh "${APP_DIR}"/bin/
+RUN shellcheck "${APP_DIR}"/bin/*.sh
+
+# Note the use of no-cache-dir to save space in the docker image.
+# See https://github.com/hadolint/hadolint/wiki/DL3042.
+# Unfortunately, it is not possible to mount volumes during a docker build.
+# hadolint ignore=DL3013
+RUN \
+    python3.8 -m pip install --no-cache-dir --upgrade pip && \
+    python3.8 -m pip --version
+
+# FIXME: Change to reflect use of poetry.
+
+# Add requirements.txt separately to better use cached builds
+# (i.e. editing other files in the dir won't trigger a full pip-reinstall)
+COPY ./requirements.txt "${APP_DIR}"/
+
+# Note the use of no-cache-dir to save space in the docker image.
+# See https://github.com/hadolint/hadolint/wiki/DL3042.
+# Unfortunately, it is not possible to mount volumes during a docker build.
+# hadolint ignore=DL3013
+RUN \
+    `# We install these to the user python environment so that we can modify them without sudo.` \
+    python3.8 -m pip install --no-cache-dir --user --requirement "${APP_DIR}"/requirements.txt
+
+RUN \
+    jupyter contrib nbextension install --user --symlink && \
+    jupyter nbextension enable execute_time/ExecuteTime && \
+    jupyter nbextension enable toc2/main && \
+    safety check --file "${APP_DIR}"/requirements.txt --full-report && \
+    python3.8 -m pip check
+
+ENV PATH="${APP_DIR}/bin${PATH:+:${PATH}}"
+
+RUN docker-entrypoint.sh bash --version
+
+# Test Dockerfile.
+COPY ./Dockerfile "${APP_DIR}"/
+
+RUN hadolint "${APP_DIR}"/Dockerfile
+
+ENV SHELL=/bin/bash
+
+ENTRYPOINT ["docker-entrypoint.sh"]
+
+HEALTHCHECK --interval=5m --start-period=30s --timeout=10s CMD healthcheck.sh
+
+# hadolint ignore=DL3000
+WORKDIR "${APP_DIR}"

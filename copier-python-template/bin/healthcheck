@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+curl --fail --silent http://host.docker.internal:8888 || exit 1
