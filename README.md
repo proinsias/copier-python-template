@@ -4,7 +4,7 @@
 
 This template aims at making it easier to configure my python
 projects.
-It uses Copier to keep your projects updated with a unified GH Actions
+It uses Copier to keep my projects updated with a unified GH Actions
 structure and configuration.
 
 ## First usage
@@ -51,22 +51,9 @@ FIXME: Update below.
   with [coverage](https://github.com/nedbat/coveragepy) support
 
 Add questions about whether to add in certain files so I don't have to
-keep manually deleting this?
+keep manually deleting them?
 
-
-<https://github.com/Cecron/copier-python>
-<https://github.com/copier-org/autopretty>
-<https://github.com/eliostvs/tomate-plugin-template>
-<https://github.com/maces/python-tooling-enterpy2021>
-<https://github.com/NathanDeMaria/mirrorball>
-<https://github.com/OCA/oca-addons-repo-template>
 <https://github.com/pawamoy/copier-poetry>
-<https://github.com/pawamoy/copier-pdm>
-<https://github.com/pdm-project/copier-pdm>
-<https://github.com/Tecnativa/doodba-copier-template>
-<https://github.com/Tecnativa/image-template>
-<https://github.com/ypid/debops-template>
 <https://github.com/cjolowicz/cookiecutter-hypermodern-python>
-
 
 -->
