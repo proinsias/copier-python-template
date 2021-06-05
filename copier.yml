@@ -1,5 +1,84 @@
-_exclude:
-  - /.git
-  - copier.yml
-  - LICENSE
-  - README.md
+---
+# ====== jinja ======
+# Configure template to use standard jinja2 syntax
+# From: https://github.com/Tecnativa/doodba-copier-template/blob/stable/copier.yml#L1-L10
+_templates_suffix: .jinja
+_envops:
+  block_end_string: "%}"
+  block_start_string: "{%"
+  comment_end_string: "#}"
+  comment_start_string: "{#"
+  keep_trailing_newline: true
+  variable_end_string: "}}"
+  variable_start_string: "{{"
+
+# ====== TEMPLATE ======
+# _answers_file: .copier-answers.yml
+# _exclude:
+#  - /.git
+_subdirectory: copier-python-template
+# _skip_if_exists:
+#   - "{{ package_name_py }}/__init__.py"
+#   - "{{ doc_dir }}/README.md"
+#   - LICENSE
+#   - pyproject.toml
+# _tasks:
+#   - git init
+#   - python _copier_post_generation.py
+
+# ====== QUESTIONS ======
+# project_name:
+#   type: str
+#   help: Your project name (can have spaces)
+#
+# package_name_py:
+#   type: str
+#   help: Your Python package name (should be in `snake_case`)
+#   default: "{{ project_name|lower|replace('-', '_')|replace(' ', '_') }}"
+#
+# project_description:
+#   type: str
+#   help: Your project description
+#
+# author_name:
+#   type: str
+#   help: Your full name
+#   default: Kyle King
+#
+# author_email:
+#   type: str
+#   help: Your account email
+#   default: dev.act.kyle@gmail.com
+#
+# repository_provider:
+#   type: str
+#   help: Your repository provider
+#   default: https://github.com
+#
+# author_username:
+#   type: str
+#   help: "Your username for {{ repository_provider }}"
+#   default: kyleking
+#
+# repository_namespace:
+#   type: str
+#   help: "Your repository namespace (i.e. {{ repository_provider }}/<namespace>/{{ package_name_py }}"
+#   default: "{{ author_username }}"
+#
+# copyright_date:
+#   type: str
+#   help: The copyright date
+#   default: "{{ now().year }}"
+#
+# doc_dir:
+#   type: str
+#   help: Relative path to the documentation source file directory. Default is "docs/"
+#   default: docs/
+#
+# codecov_token:
+#   type: str
+#   help: Code coverage token for uploading reports
+#
+# install_extras:
+#   type: str
+#   help: (Uncommon) Optional extras to install when running in CI. Example "-E dev -E lint". Typically leave blank
