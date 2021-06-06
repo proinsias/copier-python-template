@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "copier-python-template"
+version = "0.1.0"
+description = ""
+authors = ["Francis T. O'Donovan <proinsias@users.noreply.github.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.2"
+copier = "^5.1.0"
+yamllint = "^1.26.1"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+
+# FIXME:
+# Add tox.ini stuff here. Including tox config itself!
+# black, coverage, pytest, mypy, vulture,

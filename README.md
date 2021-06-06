@@ -23,9 +23,9 @@ structure and configuration.
 1. Answer questions, if anything changed.
 1. Commit: `git commit -am 'Update copier template'`.
 
-## Thanks to
+## Based on
 
-- [branchvincent/python-template](https://github.com/branchvincent/python-template/)
+- [branchvincent/python-template](https://github.com/branchvincent/python-template/).
 - [KyleKing/calcipy_template](https://github.com/KyleKing/calcipy_template/).
 - [Tecnativa/doodba-copier-template](https://github.com/Tecnativa/doodba-copier-template/).
 
