@@ -1,32 +1,19 @@
-[build-system]
-requires = ["poetry-core>=1.0.0"]
-build-backend = "poetry.core.masonry.api"
-
-[tool.commitizen]
-name = "cz_conventional_commits"
-version = "0.0.1"
-tag_format = "2021.$version"
-version_files = [
-    "pyproject.toml",
-    "{{ package_name_py }}/__init__.py",
-    "appveyor.yml",
-]
-
 [tool.poetry]
 name = "{{ package_name_py }}"
 version = "0.0.1"
 description = "{{ project_description }}"
-license = "MIT"
+license = "Unlicense"
 authors = ["{{ author_name }} <{{ author_email }}>"]
 maintainers = []
 repository = "{{ repository_provider }}/{{ repository_namespace }}/{{ package_name_py }}"
 documentation = "{{ repository_provider }}/{{ repository_namespace }}/{{ package_name_py }}/docs"
-readme = "{{ doc_dir }}/README.md"
-include = ["LICENSE.md"]
+readme = "README.md"
+include = ["LICENSE"]
+packages = [{ include = "{{project_name}}", from = "src" }]
 keywords = []
 classifiers = [
     "Development Status :: 1 - Planning",
-    "License :: OSI Approved :: MIT License",
+    "License :: OSI Approved :: The Unlicense (Unlicense)",
     "Operating System :: OS Independent",
     "Programming Language :: Python :: 3.8",
     "Programming Language :: Python :: 3.9",
@@ -39,14 +26,33 @@ classifiers = [
 python = "^3.8"
 
 [tool.poetry.dev-dependencies]
+black = "*"
+flakehell = "*"
+isort = "*"
+{% if docs -%}
+mkdocs = "*"
+mkdocs-material = "*"
+{%- endif %}
+mypy = "*"
+poethepoet = "*"
+pre-commit = "*"
+pytest = "*"
 
-[tool.poetry.dependencies.calcipy]
-git = "https://github.com/kyleking/calcipy.git"
-branch = "dev/development"
-rev = "ad148bc" # Always pin to a commit
-develop = true # Optional: will reinstall each time
+[tool.flakehell]
+max_line_length = 88
 
-[tool.poetry.dev-dependencies.calcipy]
-git = "https://github.com/kyleking/calcipy.git"
-branch = "dev/development"
-extras = ["dev", "lint", "test"]
+[tool.flakehell.plugins]
+mccabe = ["+*"]
+pycodestyle = ["+*", "-E203", "-W503", "-W504"]
+pyflakes = ["+*"]
+pylint = ["+*"]
+
+[tool.isort]
+profile = "black"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

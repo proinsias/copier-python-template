@@ -1,8 +1,12 @@
 [tool.poetry]
 name = "copier-python-template"
-version = "0.1.0"
-description = ""
+version = "0.0.1"
+description = "Copier template for my python projects."
+license = "Unlicense"
 authors = ["Francis T. O'Donovan <proinsias@users.noreply.github.com>"]
+repository = "https://github.com/proinsias/copier-python-template"
+documentation = "https://github.com/proinsias/copier-python-template"
+readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.9"
@@ -11,6 +15,9 @@ python = "^3.9"
 pytest = "^5.2"
 copier = "^5.1.0"
 yamllint = "^1.26.1"
+
+[tool.poetry.urls]
+"Bug Tracker" = "https://github.com/proinsias/copier-python-template/issues"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
