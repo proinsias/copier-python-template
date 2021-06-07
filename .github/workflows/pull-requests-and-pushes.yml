@@ -31,11 +31,6 @@ jobs:
           # GitHub Status Check won't become failure with warning.
           level: warning
 
-      - name: 'Bundler Audit'
-        uses: andrewmcodes/bundler-audit-action@v0.1.0
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
       - name: Detect Secrets
         uses: reviewdog/action-detect-secrets@v0.4.3
         with:
