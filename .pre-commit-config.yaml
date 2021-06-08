@@ -2,8 +2,6 @@
 
 # Add the pre-commit badge to the README!
 
-# Which of these should have stages?
-
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v3.4.0
@@ -41,15 +39,6 @@ repos:
     hooks:
       - id: fix-smartquotes
 
-  # Ansible
-
-  #  - repo: https://github.com/ansible-community/ansible-lint.git
-  #    rev: v5.0.7
-  #    hooks:
-  #      - id: ansible-lint
-  #        args: ['--offline']  # FIXME: Take out once I figure out how to authenticate.
-  #        files: \.(yaml|yml)$
-
   # Docker
 
   - repo: https://github.com/IamTheFij/docker-pre-commit
@@ -57,11 +46,12 @@ repos:
     hooks:
       - id: docker-compose-check
 
-  - repo: https://github.com/pryorda/dockerfilelint-precommit-hooks
-    rev: v0.1.0
-    hooks:
-      - id: dockerfilelint
-        stages: [commit]
+  # Drop until replicatedhq/dockerfilelint:166 fixed
+  # - repo: https://github.com/pryorda/dockerfilelint-precommit-hooks
+  #   rev: v0.1.0
+  #   hooks:
+  #     - id: dockerfilelint
+  #       stages: [commit]
 
   - repo: https://github.com/hadolint/hadolint
     rev: v2.1.0
@@ -103,16 +93,6 @@ repos:
     hooks:
       - id: add-trailing-comma
 
-  - repo: https://github.com/PyCQA/bandit  # Add badge to README!
-    rev: '1.7.0'
-    hooks:
-      - id: bandit
-
-  - repo: https://github.com/Lucas-C/pre-commit-hooks-safety
-    rev: v1.2.1
-    hooks:
-      - id: python-safety-dependencies-check
-
   - repo: https://gitlab.com/smop/pre-commit-hooks
     rev: v1.0.0
     hooks:
@@ -137,16 +117,7 @@ repos:
   - repo: https://github.com/jumanjihouse/pre-commit-hooks
     rev: 2.1.5
     hooks:
-      # - id: bundler-audit
-      # - id: check-mailmap
-      # - id: fasterer
-      # - id: forbid-binary
-      # - id: git-check  # Configure in .gitattributes
       - id: git-dirty  # Configure in .gitignore
-      # - id: markdownlint  # Configure in .mdlrc
-      # - id: reek
-      # - id: require-ascii
-      # - id: rubocop
       - id: script-must-have-extension
       - id: script-must-not-have-extension
       - id: shellcheck
