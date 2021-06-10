@@ -27,14 +27,13 @@ jobs:
 
       - name: Install hadolint
         run: |
-          sudo wget --output-file /bin/hadolint \
+          sudo wget --output-document /usr/bin/hadolint \
               https://github.com/hadolint/hadolint/releases/download/v2.3.0/hadolint-Linux-x86_64
-          sudo chmod +x /bin/hadolint
+          sudo chmod +x /usr/bin/hadolint
 
       - name: Install poetry
         run: |
-          sudo curl --location --show-error --silent \
-              https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python -
+          sudo python3 -m pip install poetry
 
       - uses: browniebroke/pre-commit-autoupdate-action@v1.0.0
 
