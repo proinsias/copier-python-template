@@ -70,6 +70,13 @@ repos:
     hooks:
       - id: check-github-workflows
 
+  # Jinja
+
+  - repo: https://github.com/motet-a/jinjalint
+    rev: 01e0a4d  # pre-commit support is not tagged.
+    hooks:
+      - id: jinjalint
+
   # Markdown
 
   - repo: https://github.com/executablebooks/mdformat
