@@ -72,10 +72,10 @@ repos:
 
   # Jinja
 
-  - repo: https://github.com/motet-a/jinjalint
-    rev: 01e0a4d  # pre-commit support is not tagged.
-    hooks:
-      - id: jinjalint
+  # - repo: https://github.com/motet-a/jinjalint
+  #   rev: 01e0a4d  # pre-commit support is not tagged.
+  #   hooks:
+  #    - id: jinjalint
 
   # Markdown
 
@@ -124,7 +124,7 @@ repos:
   - repo: https://github.com/jumanjihouse/pre-commit-hooks
     rev: 2.1.5
     hooks:
-      - id: git-dirty  # Configure in .gitignore
+      # - id: git-dirty  # Configure in .gitignore
       - id: script-must-have-extension
       - id: script-must-not-have-extension
       - id: shellcheck
