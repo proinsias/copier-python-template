@@ -1,0 +1,5 @@
+---
+
+additional-dependency-files:
+    - type: pyproject-toml
+      path: pyproject.toml
