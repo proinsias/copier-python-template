@@ -23,6 +23,7 @@ pull_request_rules:
     actions:
       merge:
         method: merge
+        strict: smart
   - name: warn on conflicts
     conditions:
       - conflict
@@ -32,7 +33,3 @@ pull_request_rules:
       label:
         add:
           - conflict
-#   - name: delete head branch after merge
-#     conditions: []
-#     actions:
-#       delete_head_branch: {}
