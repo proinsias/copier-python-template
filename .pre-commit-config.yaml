@@ -39,25 +39,6 @@ repos:
     hooks:
       - id: fix-smartquotes
 
-  # Docker
-
-  - repo: https://github.com/IamTheFij/docker-pre-commit
-    rev: v2.0.1
-    hooks:
-      - id: docker-compose-check
-
-  # Drop until replicatedhq/dockerfilelint:166 fixed
-  # - repo: https://github.com/pryorda/dockerfilelint-precommit-hooks
-  #   rev: v0.1.0
-  #   hooks:
-  #     - id: dockerfilelint
-  #       stages: [commit]
-
-  - repo: https://github.com/hadolint/hadolint
-    rev: v2.7.0
-    hooks:
-      - id: hadolint
-
   # Git
 
   - repo: https://github.com/jorisroovers/gitlint
@@ -69,13 +50,6 @@ repos:
     rev: 0.4.1
     hooks:
       - id: check-github-workflows
-
-  # Jinja
-
-  # - repo: https://github.com/motet-a/jinjalint
-  #   rev: 01e0a4d  # pre-commit support is not tagged.
-  #   hooks:
-  #    - id: jinjalint
 
   # Markdown
 
