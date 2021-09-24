@@ -246,11 +246,11 @@ python-versions = "*"
 
 [[package]]
 name = "yamllint"
-version = "1.26.1"
+version = "1.26.3"
 description = "A linter for YAML files."
 category = "dev"
 optional = false
-python-versions = ">=3.5.*"
+python-versions = ">=3.5"
 
 [package.dependencies]
 pathspec = ">=0.5.3"
@@ -259,7 +259,7 @@ pyyaml = "*"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.9"
-content-hash = "a3fa419e563a1ea3105554d3a63e5c26207676d7fc23383db7db6bef9d2f78a6"
+content-hash = "b6b0a5a59998793ff5834897d66951d1d4c4517de46ca2b3abf061c1d1ba0edf"
 
 [metadata.files]
 atomicwrites = [
@@ -498,5 +498,5 @@ typing-extensions = [
     {file = "typing_extensions-3.10.0.0.tar.gz", hash = "sha256:50b6f157849174217d0656f99dc82fe932884fb250826c18350e159ec6cdf342"},
 ]
 yamllint = [
-    {file = "yamllint-1.26.1.tar.gz", hash = "sha256:87d9462b3ed7e9dfa19caa177f7a77cd9888b3dc4044447d6ae0ab233bcd1324"},
+    {file = "yamllint-1.26.3.tar.gz", hash = "sha256:3934dcde484374596d6b52d8db412929a169f6d9e52e20f9ade5bf3523d9b96e"},
 ]
