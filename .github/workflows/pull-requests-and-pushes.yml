@@ -32,13 +32,13 @@ jobs:
           level: warning
 
       - name: Detect Secrets
-        uses: reviewdog/action-detect-secrets@v0.6.1
+        uses: reviewdog/action-detect-secrets@v0.6.2
         with:
           github_token: ${{ secrets.github_token }}
           reporter: github-pr-review
 
       - name: markdownlint
-        uses: reviewdog/action-markdownlint@v0.2
+        uses: reviewdog/action-markdownlint@v0.3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           reporter: github-pr-review
