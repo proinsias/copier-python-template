@@ -19,12 +19,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: misspell
-        uses: reviewdog/action-misspell@v1
-        with:
-          github_token: ${{ secrets.github_token }}
-          locale: "US"
-
       - name: Install shfmt
         run: |
           sudo apt update
