@@ -1,4 +1,17 @@
 ---
+queue_rules:
+  - name: default
+    conditions:
+      # Conditions to get out of the queue (= merged)
+      - check-success-or-neutral=Analyse
+      - check-success-or-neutral=Check code quality
+      - check-success-or-neutral=CodeQL
+      - check-success-or-neutral=Deadpendency Check
+      - check-success-or-neutral=GitHub Actions
+      - check-success-or-neutral=Python Source Analyzer
+      - check-success-or-neutral=Scan-Build
+      - check-success-or-neutral=Security Audit for Infrastructure
+
 pull_request_rules:
   - name: automatic merge on CI success and review
     conditions:
@@ -13,9 +26,9 @@ pull_request_rules:
       - check-success-or-neutral=Scan-Build
       - check-success-or-neutral=Security Audit for Infrastructure
     actions:
-      merge:
+      queue:
         method: merge
-        strict: smart
+        name: default
   - name: automatic merge for Dependabot pull requests
     conditions:
       - base=main
@@ -29,9 +42,9 @@ pull_request_rules:
       - check-success-or-neutral=Scan-Build
       - check-success-or-neutral=Security Audit for Infrastructure
     actions:
-      merge:
+      queue:
         method: merge
-        strict: smart
+        name: default
   - name: warn on conflicts
     conditions:
       - conflict
