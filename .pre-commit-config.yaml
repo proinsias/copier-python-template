@@ -47,14 +47,14 @@ repos:
       - id: gitlint
 
   - repo: https://github.com/sirosen/check-jsonschema
-    rev: 0.9.1
+    rev: 0.10.0
     hooks:
       - id: check-github-workflows
 
   # Markdown
 
   - repo: https://github.com/executablebooks/mdformat
-    rev: 0.7.12
+    rev: 0.7.13
     hooks:
       - id: mdformat
         additional_dependencies:
