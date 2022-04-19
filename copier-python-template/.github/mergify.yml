@@ -1,56 +1,40 @@
 ---
 queue_rules:
-  - name: default
-    conditions:
-      # Conditions to get out of the queue (= merged)
-      - check-success-or-neutral=Analyse
-      - check-success-or-neutral=Check code quality
-      - check-success-or-neutral=CodeQL
-      - check-success-or-neutral=Deadpendency Check
-      - check-success-or-neutral=GitHub Actions
-      - check-success-or-neutral=Python Source Analyzer
-      - check-success-or-neutral=Scan-Build
-      - check-success-or-neutral=Security Audit for Infrastructure
+    - name: default
+      conditions:
+          # Conditions to get out of the queue (= merged)
+          - check-success-or-neutral=Deadpendency Check
 
 pull_request_rules:
-  - name: automatic merge on CI success and review
-    conditions:
-      - base=main
-      - author~=github-actions
-      - check-success-or-neutral=Analyse
-      - check-success-or-neutral=Check code quality
-      - check-success-or-neutral=CodeQL
-      - check-success-or-neutral=Deadpendency Check
-      - check-success-or-neutral=GitHub Actions
-      - check-success-or-neutral=Python Source Analyzer
-      - check-success-or-neutral=Scan-Build
-      - check-success-or-neutral=Security Audit for Infrastructure
-    actions:
-      queue:
-        method: merge
-        name: default
-  - name: automatic merge for Dependabot pull requests
-    conditions:
-      - base=main
-      - author~=dependabot
-      - check-success-or-neutral=Analyse
-      - check-success-or-neutral=Check code quality
-      - check-success-or-neutral=CodeQL
-      - check-success-or-neutral=Deadpendency Check
-      - check-success-or-neutral=GitHub Actions
-      - check-success-or-neutral=Python Source Analyzer
-      - check-success-or-neutral=Scan-Build
-      - check-success-or-neutral=Security Audit for Infrastructure
-    actions:
-      queue:
-        method: merge
-        name: default
-  - name: warn on conflicts
-    conditions:
-      - conflict
-    actions:
-      comment:
-        message: "@{{author}} this pull request is now in conflict 😩"
-      label:
-        add:
+    - name: automatic merge for me
+      conditions:
+          - base=main
+          - author~=proinsias
+          - check-success-or-neutral=Deadpendency Check
+    - name: automatic merge on CI success and review
+      conditions:
+          - base=main
+          - author~=github-actions
+          - check-success-or-neutral=Deadpendency Check
+      actions:
+          queue:
+              method: merge
+              name: default
+    - name: automatic merge for Dependabot pull requests
+      conditions:
+          - base=main
+          - author~=dependabot
+          - check-success-or-neutral=Deadpendency Check
+      actions:
+          queue:
+              method: merge
+              name: default
+    - name: warn on conflicts
+      conditions:
           - conflict
+      actions:
+          comment:
+              message: '@{{author}} this pull request is now in conflict 😩'
+          label:
+              add:
+                  - conflict

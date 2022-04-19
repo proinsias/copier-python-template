@@ -70,9 +70,11 @@ color_output = true
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+# Add command line options to pytest.
 # doctest-modules: run doctests from docstrings in all python modules.
+# durations: print duration of slowest tests
 # verbose: increase verbosity.
-addopts = "--doctest-modules --verbose"
+addopts = --doctest-modules --durations=0 --durations-min=1.0 --verbose
 # Enable log display during test run.
 log_cli = true
 
