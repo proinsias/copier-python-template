@@ -143,7 +143,7 @@ repos:
           - id: black
 
     - repo: https://github.com/hadialqattan/pycln
-      rev: v1.3.1 # Possible releases: https://github.com/hadialqattan/pycln/releases
+      rev: v1.3.2 # Possible releases: https://github.com/hadialqattan/pycln/releases
       hooks:
           - id: pycln
 
@@ -183,12 +183,12 @@ repos:
           - id: check-poetry # Validates the structure of the pyproject.toml file.
 
     - repo: https://github.com/pre-commit/mirrors-mypy
-      rev: v0.942
+      rev: v0.950
       hooks:
           - id: mypy
 
     - repo: https://github.com/jazzband/pip-tools
-      rev: 6.6.0
+      rev: 6.6.1
       hooks:
           - id: pip-compile
             files: ^requirements/production\.(in|txt)$
@@ -196,7 +196,7 @@ repos:
 
     - repo: https://github.com/asottile/pyupgrade
     # Automatically upgrade syntax for newer versions of the language.
-      rev: v2.32.0
+      rev: v2.32.1
       hooks:
           - id: pyupgrade
 
@@ -209,7 +209,7 @@ repos:
             args: [-c=.yamllint.yml]
 
     - repo: https://github.com/jumanjihouse/pre-commit-hook-yamlfmt
-      rev: 0.1.1
+      rev: 0.2.1
       hooks:
           - id: yamlfmt
 
@@ -235,14 +235,14 @@ repos:
           - id: shfmt
 
     - repo: https://github.com/Lucas-C/pre-commit-hooks
-      rev: v1.1.13
+      rev: v1.1.14
       hooks:
           - id: remove-crlf
           - id: remove-tabs
             exclude: .git/COMMIT_EDITMSG
 
     - repo: https://github.com/sirosen/check-jsonschema
-      rev: 0.14.3
+      rev: 0.15.0
       hooks:
           - id: check-github-actions
           - id: check-github-workflows
