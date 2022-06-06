@@ -76,7 +76,7 @@ repos:
           - id: pylint
 
     - repo: https://github.com/hadialqattan/pycln
-      rev: v1.3.2 # Possible releases: https://github.com/hadialqattan/pycln/releases
+      rev: v1.3.3 # Possible releases: https://github.com/hadialqattan/pycln/releases
       hooks:
           - id: pycln
 
@@ -91,12 +91,12 @@ repos:
           - id: pydocstyle
 
     - repo: https://github.com/pre-commit/mirrors-mypy
-      rev: v0.950
+      rev: v0.960
       hooks:
           - id: mypy
 
     - repo: https://github.com/jazzband/pip-tools
-      rev: 6.6.1
+      rev: 6.6.2
       hooks:
           - id: pip-compile
             files: ^requirements/production\.(in|txt)$
@@ -151,11 +151,6 @@ repos:
           - id: yamllint
             args: [-c=.yamllint.yml]
 
-    - repo: https://github.com/jumanjihouse/pre-commit-hook-yamlfmt
-      rev: 0.2.1
-      hooks:
-          - id: yamlfmt
-
   # Mixed
 
     - repo: https://github.com/jumanjihouse/pre-commit-hooks
@@ -176,7 +171,7 @@ repos:
             exclude: .git/COMMIT_EDITMSG
 
     - repo: https://github.com/sirosen/check-jsonschema
-      rev: 0.15.0
+      rev: 0.16.0
       hooks:
           - id: check-github-actions
           - id: check-github-workflows
