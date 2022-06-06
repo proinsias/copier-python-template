@@ -1,12 +1,11 @@
 ---
-
 # Add the pre-commit badge to the README!
 
 repos:
     - repo: https://github.com/pre-commit/pre-commit-hooks
       rev: v4.2.0
       hooks:
-      # General
+          # General
           - id: check-added-large-files
           - id: check-case-conflict
           - id: check-docstring-first
@@ -22,17 +21,23 @@ repos:
           - id: mixed-line-ending # Replaces or checks mixed line ending.
           - id: trailing-whitespace
 
-      # Json
+          # Json
           - id: check-json
           - id: pretty-format-json # Checks that all your JSON files are pretty.
 
-      # Python
+          # Python
           - id: check-ast # Check whether files parse as valid python.
           - id: check-builtin-literals # Require literal syntax when initializing empty or zero Python builtin types.
           - id: debug-statements # Check for debugger imports and py37+ breakpoint() calls in python source.
           - id: name-tests-test # Assert that files in tests/ end in _test.py, or optionally test*.py
 
-  # General
+    # General
+
+    - repo: https://github.com/pre-commit/mirrors-prettier
+      rev: v2.6.2
+      hooks:
+          - id: prettier
+            stages: [commit]
 
     - repo: https://github.com/sirosen/texthooks
       rev: 0.3.1
@@ -40,14 +45,14 @@ repos:
           - id: fix-smartquotes
           - id: fix-ligatures
 
-  # Git
+    # Git
 
     - repo: https://github.com/jorisroovers/gitlint
       rev: v0.17.0
       hooks:
           - id: gitlint
 
-  # Markdown
+    # Markdown
 
     - repo: https://github.com/executablebooks/mdformat
       rev: 0.7.14
@@ -57,13 +62,13 @@ repos:
                 - mdformat-beautysh
                 - mdformat-black
                 - mdformat-config
-          # - mdformat-frontmatter  # Breaks.
+                # - mdformat-frontmatter  # Breaks.
                 - mdformat-gfm
                 - mdformat-shfmt
                 - mdformat-tables
                 - mdformat-toc
 
-  # Python
+    # Python
 
     - repo: https://github.com/psf/black
       rev: 22.3.0
@@ -138,12 +143,12 @@ repos:
             name: isort (python)
 
     - repo: https://github.com/asottile/pyupgrade
-    # Automatically upgrade syntax for newer versions of the language.
+      # Automatically upgrade syntax for newer versions of the language.
       rev: v2.32.1
       hooks:
           - id: pyupgrade
 
-  # YAML
+    # YAML
 
     - repo: https://github.com/adrienverge/yamllint
       rev: v1.26.3
@@ -151,12 +156,12 @@ repos:
           - id: yamllint
             args: [-c=.yamllint.yml]
 
-  # Mixed
+    # Mixed
 
     - repo: https://github.com/jumanjihouse/pre-commit-hooks
       rev: 2.1.6
       hooks:
-      # - id: git-dirty  # Configure in .gitignore
+          # - id: git-dirty  # Configure in .gitignore
           - id: script-must-have-extension
           - id: script-must-not-have-extension
           - id: shellcheck
@@ -181,7 +186,7 @@ repos:
       hooks:
           - id: copier-forbidden-files
             name: copier_forbidden_files
-        # yamllint disable-line rule:line-length
+            # yamllint disable-line rule:line-length
             entry: found copier update rejection files; review them and remove them (https://copier.readthedocs.io/en/stable/updating/)
             language: fail
             files: \.rej$
