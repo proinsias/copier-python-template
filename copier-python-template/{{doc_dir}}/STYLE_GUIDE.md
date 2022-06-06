@@ -37,7 +37,7 @@ The [Changelog](https://keepachangelog.com/en/1.0.0/) is an important part of a 
 ### Git Message Guidelines
 
 - [Commit message guidelines](https://writingfordevelopers.substack.com/p/how-to-write-a-commit-message)
-  - Full sentence with verb (*lowercase*) and concise description. Below are modified examples for Conventional Commits
+  - Full sentence with verb (_lowercase_) and concise description. Below are modified examples for Conventional Commits
     - `fix(roles): bug in admin role permissions`
     - `feat(ui): implement new button design`
     - `build(pip): upgrade package to remove vulnerabilities`

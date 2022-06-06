@@ -1,5 +1,4 @@
 ---
-
 name: test
 
 on:
@@ -10,20 +9,19 @@ on:
   workflow_dispatch:
     inputs:
       pytest_addopts:
-        description:
-          Extra options for pytest; use -vv for full details; see
+        description: Extra options for pytest; use -vv for full details; see
           https://docs.pytest.org/en/latest/example/simple.html#how-to-change-command-line-options-defaults
         required: false
 
 env:
-  LANG: "en_US.utf-8"
-  LC_ALL: "en_US.utf-8"
+  LANG: 'en_US.utf-8'
+  LC_ALL: 'en_US.utf-8'
   PIP_CACHE_DIR: ${{ github.workspace }}/.cache.~/pip
   PIPX_HOME: ${{ github.workspace }}/.cache.~/pipx
   POETRY_CACHE_DIR: ${{ github.workspace }}/.cache.~/pypoetry
-  POETRY_VIRTUALENVS_IN_PROJECT: "true"
+  POETRY_VIRTUALENVS_IN_PROJECT: 'true'
   PYTEST_ADDOPTS: ${{ github.event.inputs.pytest_addopts }}
-  PYTHONIOENCODING: "UTF-8"
+  PYTHONIOENCODING: 'UTF-8'
 
 jobs:
   test:
@@ -31,7 +29,7 @@ jobs:
     strategy:
       matrix:
         python:
-          - "3.9"
+          - '3.9'
     steps:
       # Prepare environment
       - uses: actions/checkout@v2
@@ -39,10 +37,9 @@ jobs:
       - name: Install python
         uses: actions/setup-python@v1
         with:
-          python-version: "${{ matrix.python }}"
+          python-version: '${{ matrix.python }}'
       - name: Generate cache key CACHE
-        run:
-          echo "CACHE=${{ secrets.CACHE_DATE }} ${{ runner.os }} $(python -VV |
+        run: echo "CACHE=${{ secrets.CACHE_DATE }} ${{ runner.os }} $(python -VV |
           sha256sum | cut -d' ' -f1) ${{ hashFiles('pyproject.toml') }} ${{
           hashFiles('poetry.lock') }}" >> $GITHUB_ENV
       - uses: actions/cache@v2

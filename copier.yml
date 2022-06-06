@@ -4,13 +4,13 @@
 # From: https://github.com/Tecnativa/doodba-copier-template/blob/stable/copier.yml#L1-L10
 _templates_suffix: .jinja
 _envops:
-  block_end_string: "%}"
-  block_start_string: "{%"
-  comment_end_string: "#}"
-  comment_start_string: "{#"
+  block_end_string: '%}'
+  block_start_string: '{%'
+  comment_end_string: '#}'
+  comment_start_string: '{#'
   keep_trailing_newline: true
-  variable_end_string: "}}"
-  variable_start_string: "{{"
+  variable_end_string: '}}'
+  variable_start_string: '{{'
 
 # ====== TEMPLATE ======
 # _answers_file: .copier-answers.yml
@@ -67,18 +67,18 @@ repository_provider:
 
 author_username:
   type: str
-  help: "Your username for {{ repository_provider }}"
+  help: 'Your username for {{ repository_provider }}'
   default: proinsias
 
 repository_namespace:
   type: str
-  help: "Your repository namespace (i.e. {{ repository_provider }}/<namespace>/{{ package_name_py }}"
-  default: "{{ author_username }}"
+  help: 'Your repository namespace (i.e. {{ repository_provider }}/<namespace>/{{ package_name_py }}'
+  default: '{{ author_username }}'
 
 copyright_date:
   type: str
   help: The copyright date
-  default: "{{ now().year }}"
+  default: '{{ now().year }}'
 
 doc_dir:
   type: str

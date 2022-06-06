@@ -1,5 +1,4 @@
 ---
-
 github:
   prebuilds:
     # enable for the master/default branch (defaults to true)
@@ -29,7 +28,6 @@ vscode:
   extensions:
     - mads-hartmann.bash-ide-vscode@1.4.0:/qx+rdXE/fGTGWhelNf3aQ==
     - timonwong.shellcheck@0.9.0:hsU/Rd39aqPYowTqL+DbXg==
-
 # tasks:
 #   - init: bundle install
 #   - command: ./bin/build.sh

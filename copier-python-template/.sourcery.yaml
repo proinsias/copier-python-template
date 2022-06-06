@@ -1,6 +1,5 @@
 ---
-
 refactor:
-  skip:
-    - inline-immediately-returned-variable
-    - simplify-len-comparison
+    skip:
+        - inline-immediately-returned-variable
+        - simplify-len-comparison

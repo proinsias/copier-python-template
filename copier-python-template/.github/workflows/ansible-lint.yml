@@ -5,7 +5,6 @@ name: Ansible Lint
 on: [push, pull_request]
 
 jobs:
-
   ansible-lint:
     name: Ansible Lint
     runs-on: ubuntu-latest
@@ -17,4 +16,4 @@ jobs:
       - name: ansible-lint
         uses: ansible/ansible-lint-action@v4.1.0
         with:
-          targets: "roles"
+          targets: 'roles'

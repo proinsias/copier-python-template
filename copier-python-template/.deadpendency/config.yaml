@@ -1,5 +1,4 @@
 ---
-
 additional-dependency-files:
     - type: bundler-gemfile
       path: Gemfile
@@ -7,7 +6,6 @@ additional-dependency-files:
       path: requirements-dev.txt
 
 ignore-failures:
-
     python:
         - alabaster
         - astor
