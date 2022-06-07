@@ -103,21 +103,21 @@ repos:
 
     # Markdown
 
-    - repo: https://github.com/executablebooks/mdformat
-      rev: 0.7.14
-      hooks:
-          - id: mdformat
-            additional_dependencies:
-                - mdformat-beautysh
-                - mdformat-black
-                - mdformat-config
-                - mdformat-deflist
-                # - mdformat-frontmatter  # Breaks.
-                - mdformat-footnote
-                - mdformat-gfm
-                - mdformat-shfmt
-                - mdformat-tables
-                - mdformat-toc
+    # - repo: https://github.com/executablebooks/mdformat
+    #   rev: 0.7.14
+    #   hooks:
+    #       - id: mdformat
+    #         additional_dependencies:
+    #             - mdformat-beautysh
+    #             - mdformat-black
+    #             - mdformat-config
+    #             - mdformat-deflist
+    #             # - mdformat-frontmatter  # Breaks.
+    #             - mdformat-footnote
+    #             - mdformat-gfm
+    #             - mdformat-shfmt
+    #             - mdformat-tables
+    #             - mdformat-toc
 
     # Python
 
@@ -196,7 +196,7 @@ repos:
           - id: check-poetry # Validates the structure of the pyproject.toml file.
 
     - repo: https://github.com/pre-commit/mirrors-mypy
-      rev: v0.960
+      rev: v0.961
       hooks:
           - id: mypy
 
@@ -209,7 +209,7 @@ repos:
 
     - repo: https://github.com/asottile/pyupgrade
       # Automatically upgrade syntax for newer versions of the language.
-      rev: v2.32.1
+      rev: v2.34.0
       hooks:
           - id: pyupgrade
 
