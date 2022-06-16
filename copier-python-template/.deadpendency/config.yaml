@@ -45,6 +45,7 @@ ignore-failures:
         - pyasn1
         - pyasn1-modules
         - pylev
+        - pytz-deprecation-shim
         - send2trash
         - sklearn
         - sphinxcontrib-applehelp
@@ -54,6 +55,7 @@ ignore-failures:
         - termcolor
         - testpath
         - vobject
+        - wcwidth
         - webencodings
         - widgetsnbextension
 

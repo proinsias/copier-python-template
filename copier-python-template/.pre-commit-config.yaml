@@ -5,7 +5,7 @@
 
 repos:
     - repo: https://github.com/pre-commit/pre-commit-hooks
-      rev: v4.2.0
+      rev: v4.3.0
       hooks:
           # General
           - id: check-added-large-files
@@ -59,7 +59,7 @@ repos:
     # Ansible
 
     - repo: https://github.com/ansible-community/ansible-lint.git
-      rev: v6.2.2
+      rev: v6.3.0
       hooks:
           - id: ansible-lint
 
@@ -142,7 +142,7 @@ repos:
           - id: dead
 
     - repo: https://github.com/pre-commit/mirrors-pylint
-      rev: v3.0.0a4
+      rev: v3.0.0a5
       hooks:
           - id: pylint
 
@@ -221,10 +221,10 @@ repos:
           - id: yamllint
             args: [-c=.yamllint.yml]
 
-    - repo: https://github.com/jumanjihouse/pre-commit-hook-yamlfmt
-      rev: 0.2.1
-      hooks:
-          - id: yamlfmt
+    # - repo: https://github.com/jumanjihouse/pre-commit-hook-yamlfmt
+    #   rev: 0.2.1
+    #   hooks:
+    #       - id: yamlfmt
 
     # Mixed
 
