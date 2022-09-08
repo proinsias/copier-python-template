@@ -37,6 +37,17 @@ mypy = "*"
 poethepoet = "*"
 pre-commit = "*"
 pytest = "*"
+pytest-black = "*"
+pytest-mock = "*"
+pytest-profiling = "*"
+pytest-sugar = "*"
+pytest-xdist = "*"
+
+# Use flake518 as wrapper to flake8, as the latter doesn't support this config file!
+[tool.flake8]
+doctests = true
+exclude = ".git,__pycache__"
+max-line-length = 120
 
 [tool.flakehell]
 max_line_length = 88
@@ -86,24 +97,22 @@ color_output = true
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 # Add command line options to pytest.
+# black: run black formatter.
 # doctest-modules: run doctests from docstrings in all python modules.
-# durations: print duration of slowest tests
+# durations: print duration of slowest tests.
+# n auto: Use all CPUs for parallel processing.
+# profile: generate code profile via pytest_profiling plugin.
 # verbose: increase verbosity.
-addopts = --doctest-modules --durations=0 --durations-min=1.0 --verbose
+addopts = --black --doctest-modules --durations=0 --durations-min=1.0 -n auto --profile --verbose
 # Enable log display during test run.
 log_cli = true
+# testpaths = []
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
 
-# flake8 doesn't support this config file!  # FIXME: Use flake9, etc.? or separate config file?
-# [tool.flake8]
-# doctests = True
-# exclude =.git,__pycache__
-# max-line-length = 120
-
-# pycodestyle doesn't support this config file!  # FIXME: Use flake9, etc.? or separate config file?
+# pycodestyle doesn't support this config file!  # Use flake8 above instead.
 # [tool.pycodestyle]
 # max-line-length = 120
 
