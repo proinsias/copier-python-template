@@ -52,7 +52,7 @@ jobs:
         env:
           VALIDATE_ALL_CODEBASE: true # set to false to check only changed files
           VALIDATE_EDITORCONFIG: False # FIXME: Figure out why editorconfig-checker complains about indent style?!
-          DEFAULT_BRANCH: master
+          DEFAULT_BRANCH: main
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           LINTER_RULES_PATH: .
           MARKDOWN_CONFIG_FILE: .markdownlint.json
