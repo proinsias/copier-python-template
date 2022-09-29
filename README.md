@@ -10,24 +10,24 @@ structure and configuration.
 ## First usage
 
 1. [Install Copier](https://copier.readthedocs.io/en/stable/#installation).
-1. Enter your project folder: `cd my-project`.
-1. Make it a git repo: `git init`.
-1. Run copier `copy gh:proinsias/copier-python-template .`.
-1. Answer questions.
-1. Commit: `git commit -am 'Apply copier template'`.
+2. Enter your project folder: `cd my-project`.
+3. Make it a git repo: `git init`.
+4. Run copier `copy gh:proinsias/copier-python-template .`.
+5. Answer questions.
+6. Commit: `git commit -am 'Apply copier template'`.
 
 ## Get updates
 
 1. Enter your project folder: `cd my-project`.
-1. Update: `copier update`.
-1. Answer questions, if anything changed.
-1. Commit: `git commit -am 'Update copier template'`.
+2. Update: `copier update`.
+3. Answer questions, if anything changed.
+4. Commit: `git commit -am 'Update copier template'`.
 
 ## Based on
 
-- [branchvincent/python-template](https://github.com/branchvincent/python-template/).
-- [KyleKing/calcipy_template](https://github.com/KyleKing/calcipy_template/).
-- [Tecnativa/doodba-copier-template](https://github.com/Tecnativa/doodba-copier-template/).
+-   [branchvincent/python-template](https://github.com/branchvincent/python-template/).
+-   [KyleKing/calcipy_template](https://github.com/KyleKing/calcipy_template/).
+-   [Tecnativa/doodba-copier-template](https://github.com/Tecnativa/doodba-copier-template/).
 
 <!--
 
