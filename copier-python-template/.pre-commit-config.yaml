@@ -51,7 +51,7 @@ repos:
           - id: fix-ligatures
 
     - repo: https://github.com/pre-commit/mirrors-prettier
-      rev: v3.0.0-alpha.0
+      rev: v3.0.0-alpha.2
       hooks:
           - id: prettier
             stages: [commit]
@@ -59,7 +59,7 @@ repos:
     # Ansible
 
     - repo: https://github.com/ansible-community/ansible-lint.git
-      rev: v6.7.0
+      rev: v6.8.2
       hooks:
           - id: ansible-lint
             stages:
@@ -69,7 +69,7 @@ repos:
     # Docker
 
     - repo: https://github.com/IamTheFij/docker-pre-commit
-      rev: v2.1.0
+      rev: v2.1.1
       hooks:
           - id: docker-compose-check
 
@@ -105,6 +105,11 @@ repos:
     #     - id: jinjalint
 
     # Markdown
+
+    - repo: https://github.com/tcort/markdown-link-check
+      rev: v3.10.3
+      hooks:
+          - id: markdown-link-check
 
     # - repo: https://github.com/executablebooks/mdformat
     #   rev: 0.7.14
@@ -197,7 +202,7 @@ repos:
           - id: pylint
 
     - repo: https://github.com/psf/black
-      rev: 22.8.0
+      rev: 22.10.0
       hooks:
           - id: black
 
@@ -247,12 +252,12 @@ repos:
           - id: check-poetry # Validates the structure of the pyproject.toml file.
 
     - repo: https://github.com/pre-commit/mirrors-mypy
-      rev: v0.981
+      rev: v0.982
       hooks:
           - id: mypy
 
     - repo: https://github.com/jazzband/pip-tools
-      rev: 6.8.0
+      rev: 6.9.0
       hooks:
           - id: pip-compile
             files: ^requirements/production\.(in|txt)$
@@ -260,7 +265,7 @@ repos:
 
     - repo: https://github.com/asottile/pyupgrade
       # Automatically upgrade syntax for newer versions of the language.
-      rev: v2.38.2
+      rev: v3.1.0
       hooks:
           - id: pyupgrade
             args: [--py39-plus] # Update if I change the python3 version.
@@ -329,12 +334,12 @@ repos:
           - id: check-readthedocs
 
     - repo: https://github.com/zricethezav/gitleaks
-      rev: v8.12.0
+      rev: v8.15.0
       hooks:
           - id: gitleaks
 
     - repo: https://github.com/rhysd/actionlint
-      rev: v1.6.19
+      rev: v1.6.21
       hooks:
           - id: actionlint
 
@@ -342,3 +347,58 @@ repos:
       rev: 2.6.1
       hooks:
           - id: editorconfig-checker
+
+    - repo: https://github.com/MarcoGorelli/cython-lint
+      rev: v0.1.10
+      hooks:
+          - id: cython-lint
+
+    - repo: https://github.com/RyoWakabayashi/pre-commit-mirrors-textlint
+      rev: v12.2.1
+      hooks:
+          - id: textlint
+            additional_dependencies:
+                [
+                    'textlint',
+                    'textlint-plugin-latex2e',
+                    'textlint-filter-rule-comments',
+                    'textlint-rule-alex',
+                    'textlint-rule-apostrophe',
+                    'textlint-rule-common-misspellings',
+                    'textlint-rule-diacritics',
+                    'textlint-rule-doubled-spaces',
+                    'textlint-rule-editorconfig',
+                    'textlint-rule-en-capitalization',
+                    'textlint-rule-en-spell',
+                    'textlint-rule-max-number-of-lines',
+                    'textlint-rule-no-dead-link',
+                    'textlint-rule-no-empty-section',
+                    'textlint-rule-no-start-duplicated-conjunction',
+                    'textlint-rule-no-todo',
+                    'textlint-rule-stop-words',
+                    'textlint-rule-terminology',
+                    'textlint-rule-write-good',
+                    'textlint-rule-unexpanded-acronym',
+                    '@textlint-rule/textlint-rule-no-duplicate-abbr',
+                    '@textlint-rule/textlint-rule-no-invalid-control-character',
+                ]
+
+    - repo: https://github.com/oxsecurity/megalinter
+      rev: v6.11.1
+      hooks:
+          - id: megalinter-incremental # Faster, less thorough
+            stages:
+                - commit
+          - id: megalinter-full # Slower, more thorough
+            stages:
+                - push
+
+    - repo: https://github.com/streetsidesoftware/cspell-cli
+      rev: v6.12.0
+      hooks:
+          - id: cspell
+
+    - repo: https://github.com/bridgecrewio/checkov/
+      rev: 2.1.270
+      hooks:
+          - id: checkov

@@ -65,6 +65,7 @@ ignore-failures:
         - bundle-audit
         - jekyll-gist
         - jekyll-github-metadata
+        - jekyll-include-cache
         - jekyll-paginate
         - jekyll-sitemap
         - jemoji

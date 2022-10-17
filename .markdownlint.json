@@ -3,8 +3,12 @@
   "line-length": {
     "line_length": 120
   },
+  "list-marker-space": {
+    "ul_single": 3,
+    "ul_multi": 3
+  },
   "no-trailing-punctuation": {
-    "punctuation": ",.,:;"
+    "punctuation": ",.,:;!。，；:"
   },
   "ol-prefix": {
     "style": "ordered"
