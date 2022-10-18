@@ -58,8 +58,8 @@ Use [SemVer](https://semver.org/)
         [said](https://github.com/erlang/otp/wiki/writing-good-commit-messages)
         [before](https://github.com/spring-projects/spring-framework/blob/30bce7/CONTRIBUTING.md#format-commit-messages).
     -   The seven rules of a great Git commit message
-        -   2. [Try for 50 characters, but consider 72 the hard limit](https://chris.beams.io/posts/git-commit/#limit-50)
-        -   7. [Use the body to explain what and why vs. how](https://chris.beams.io/posts/git-commit/#why-not-how)
+        -   [Try for 50 characters, but consider 72 the hard limit](https://chris.beams.io/posts/git-commit/#limit-50)
+        -   [Use the body to explain what and why vs. how](https://chris.beams.io/posts/git-commit/#why-not-how)
 
 ### Issue Labels and Milestones
 
@@ -168,7 +168,7 @@ because it is an opportunity to establish where the limits really are and what p
 
 ### External Links
 
-**TODO: Revisit**
+<!-- TODO: Revisit -->
 
 -   [Git: The Simple Guide][1]
 -   [Commit Messages][2] and [why use the present tense](https://news.ycombinator.com/item?id=8874177)
@@ -179,23 +179,23 @@ because it is an opportunity to establish where the limits really are and what p
 
 ## Python
 
-**TODO: Revisit**
+<!-- TODO: Revisit -->
 
 -   Python Style Guides
-    -   https://gist.github.com/sloria/7001839
-    -   http://www.nilunder.com/blog/2013/08/03/pythonic-sensibilities/
-    -   https://innoq.github.io/cards42org_en/
-    -   https://docs.openstack.org/hacking/latest/user/hacking.html#styleguide
-    -   https://www.python.org/doc/humor/
-    -   https://docs.python-guide.org/writing/reading/
-    -   https://realpython.com/python-refactoring/
+    -   <https://gist.github.com/sloria/7001839>
+    -   <http://www.nilunder.com/blog/2013/08/03/pythonic-sensibilities/>
+    -   <https://innoq.github.io/cards42org_en/>
+    -   <https://docs.openstack.org/hacking/latest/user/hacking.html#styleguide>
+    -   <https://www.python.org/doc/humor/>
+    -   <https://docs.python-guide.org/writing/reading/>
+    -   <https://realpython.com/python-refactoring/>
 
 ## ADRs
 
-**TODO: Revisit**
+<!-- TODO: Revisit -->
 
 -   Examples
-    -   https://github.com/pawamoy/mkdocstrings/issues/28
+    -   <https://github.com/pawamoy/mkdocstrings/issues/28>
 
 [1]: http://rogerdudler.github.io/git-guide/
 [2]: https://github.com/atom/atom/blob/master/CONTRIBUTING.md#styleguides
