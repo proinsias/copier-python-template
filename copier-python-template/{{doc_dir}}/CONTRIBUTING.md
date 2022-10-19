@@ -8,7 +8,7 @@ If you would like to submit a Pull Request, please open an issue first to discus
 
 ### Code Development
 
-See [./DEVELOPER_GUIDE.md](./DEVELOPER_GUIDE.md)
+<!-- See [DEVELOPER_GUIDE.md](./DEVELOPER_GUIDE.md) -->
 
 ### PR Process
 
@@ -18,7 +18,7 @@ See [./DEVELOPER_GUIDE.md](./DEVELOPER_GUIDE.md)
 4. Before submitting the review and pushing, make sure to run `poetry run doit`
 5. Open a new Pull Request
 
-> See the style guide for commit message format ([./STYLE_GUIDE](./STYLE_GUIDE))
+> See the style guide for commit message format ([STYLE_GUIDE](./STYLE_GUIDE.md))
 
 If you run into any issues, please check to see if there is an open issues or open a new one
 
