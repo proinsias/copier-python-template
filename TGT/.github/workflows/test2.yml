@@ -6,12 +6,12 @@ on:
   push:
     branches:
       - main
-  workflow_dispatch:
-    inputs:
-      pytest_addopts:
-        description: Extra options for pytest; use -vv for full details; see
-          https://docs.pytest.org/en/latest/example/simple.html#how-to-change-command-line-options-defaults
-        required: false
+#  workflow_dispatch:
+#    inputs:
+#      pytest_addopts:
+#        description: Extra options for pytest; use -vv for full details; see
+#          https://docs.pytest.org/en/latest/example/simple.html#how-to-change-command-line-options-defaults
+#        required: false
 
 env:
   LANG: 'en_US.utf-8'

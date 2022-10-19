@@ -129,6 +129,11 @@ repos:
 
     # Python
 
+    - repo: https://github.com/RobertCraigie/pyright-python
+      rev: v1.1.237
+      hooks:
+          - id: pyright
+
     - repo: https://github.com/pycqa/pydocstyle
       rev: 6.1.1
       hooks:
