@@ -30,6 +30,7 @@ ignore-failures:
         - future
         - google-pasta
         - imagesize
+        - iniconfig
         - ipython-genutils
         - jupyter
         - jupyter-contrib-core
