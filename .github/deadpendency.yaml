@@ -57,6 +57,7 @@ ignore-failures:
         - sphinxcontrib-qthelp
         - termcolor
         - testpath
+        - toml
         - vobject
         - wcwidth
         - webencodings
