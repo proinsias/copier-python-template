@@ -43,6 +43,22 @@ pytest-profiling = "*"
 pytest-sugar = "*"
 pytest-xdist = "*"
 
+[tool.bandit]
+# exclude_dirs = [".venv", "shared"]
+
+[tool.bandit.assert_used]
+# skips = ['*_test.py', '*test_*.py', '*unittest.py']
+
+[tool.black]
+# extend-exclude = 'shared'
+# skip-string-normalization = true
+# target-version = ['py38']
+
+[tool.docformatter]
+recursive = true
+wrap-descriptions = 120
+wrap-summaries = 120
+
 # Use flake518 as wrapper to flake8, as the latter doesn't support this config file!
 [tool.flake8]
 doctests = true

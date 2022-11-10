@@ -22,6 +22,9 @@ repos:
           - id: fix-byte-order-marker
           - id: mixed-line-ending # Replaces or checks mixed line ending.
           - id: trailing-whitespace
+          - id: no-commit-to-branch # Protect specific branches from direct checkins.
+            # Both master and main are protected by default if no branch argument is set.
+            # args: [--branch, master, --branch, develop]
 
           # Json
           - id: check-json
@@ -131,6 +134,43 @@ repos:
     #             - mdformat-toc
 
     # Python
+
+    - repo: https://github.com/econchick/interrogate
+      rev: 1.5.0
+      hooks:
+          - id: interrogate
+
+    - repo: https://github.com/terrencepreilly/darglint
+      rev: v1.8.1
+      hooks:
+          - id: darglint
+
+    - repo: https://github.com/ikamensh/flynt/
+      rev: '0.76'
+      hooks:
+          - id: flynt
+
+    - repo: https://github.com/asottile/blacken-docs
+      rev: v1.12.1
+      hooks:
+          - id: blacken-docs
+
+    - repo: https://github.com/dosisod/refurb
+      rev: 1.4.0
+      hooks:
+          - id: refurb
+
+    - repo: https://github.com/PyCQA/docformatter
+      rev: v1.5.0
+      hooks:
+          - id: docformatter
+            args: ['--in-place', '--config', './pyproject.toml']
+
+    - repo: https://github.com/HunterMcGushion/docstr_coverage
+      rev: v2.2.0
+      hooks:
+          - id: docstr-coverage
+            args: ['--verbose', '4', '.']
 
     - repo: https://github.com/MarcoGorelli/auto-walrus
       rev: v0.2.1
