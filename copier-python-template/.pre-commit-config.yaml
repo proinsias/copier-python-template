@@ -353,6 +353,11 @@ repos:
 
     # Mixed
 
+    - repo: https://github.com/kraymer/cesar
+      rev: v1.0.0
+      hooks:
+          - id: cesar
+
     - repo: https://github.com/jumanjihouse/pre-commit-hooks
       rev: 3.0.0
       hooks:
