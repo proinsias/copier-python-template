@@ -186,7 +186,16 @@ repos:
       rev: v1.6.21
       hooks:
           - id: actionlint
-#    - repo: https://github.com/editorconfig-checker/editorconfig-checker.python
-#      rev: 2.6.1
-#      hooks:
-#          - id: editorconfig-checker
+    #    - repo: https://github.com/editorconfig-checker/editorconfig-checker.python
+    #      rev: 2.6.1
+    #      hooks:
+    #          - id: editorconfig-checker
+
+    - repo: https://github.com/mxab/pre-commit-trivy.git
+      rev: v0.2.0
+      hooks:
+          - id: trivyfs-docker
+            args:
+                - --ignore-unfixed
+                - . # last arg indicates the path/file to scan
+            stages: [push]
