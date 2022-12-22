@@ -191,6 +191,8 @@ repos:
       rev: v2.3.0
       hooks:
           - id: add-trailing-comma
+            args:
+                - --py36-plus
 
     - repo: https://github.com/PyCQA/bandit
       rev: 1.7.4

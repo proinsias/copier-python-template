@@ -31,3 +31,7 @@ build-backend = "poetry.core.masonry.api"
 # FIXME:
 # Add tox.ini stuff here. Including tox config itself!
 # black, coverage, pytest, mypy, vulture,
+
+[tool.darglint]
+docstring_style = 'google'  # Default. Alternatives are 'sphinx' and 'numpy'.
+strictness = 'full'  # Default. Alternatives are 'short' and 'long'.

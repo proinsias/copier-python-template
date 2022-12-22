@@ -116,6 +116,8 @@ repos:
       rev: v2.3.0
       hooks:
           - id: add-trailing-comma
+            args:
+                - --py36-plus
 
     - repo: https://github.com/asottile/dead
       rev: v1.5.0
