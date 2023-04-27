@@ -325,6 +325,11 @@ repos:
           - id: pyupgrade
             args: [--py39-plus] # Update if I change the python3 version.
 
+    - repo: https://github.com/charliermarsh/ruff-pre-commit
+      rev: 'v0.0.263'
+      hooks:
+          - id: ruff
+
     # YAML
 
     - repo: https://github.com/adrienverge/yamllint
