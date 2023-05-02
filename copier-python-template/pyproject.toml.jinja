@@ -26,9 +26,14 @@ classifiers = [
 python = "^3.8"
 
 [tool.poetry.dev-dependencies]
-black = "*"
-flakehell = "*"
-isort = "*"
+absolufy-imports = "*"
+add-trailing-comma = "*"
+auto-walrus = "*"
+black = ">=22.6.0"
+blacken-docs = "*"
+darglint = "*"
+flynt = "*"
+gitlint = "*"
 {% if docs -%}
 mkdocs = "*"
 mkdocs-material = "*"
@@ -36,12 +41,18 @@ mkdocs-material = "*"
 mypy = "*"
 poethepoet = "*"
 pre-commit = "*"
-pytest = "*"
+pycln = "*"
+pytest = ">=6.2.1"  # Avoid safety #39253 vulnerability (CVE-2020-29651).
 pytest-black = "*"
-pytest-mock = "*"
+pytest-mock = ">=3.8.2"
 pytest-profiling = "*"
 pytest-sugar = "*"
 pytest-xdist = "*"
+refurb = "*"
+ruff = "*"
+sqlfluff = "*"
+texthooks = "*"
+vulture = "*"
 
 [tool.bandit]
 # exclude_dirs = [".venv", "shared"]
@@ -59,20 +70,8 @@ recursive = true
 wrap-descriptions = 120
 wrap-summaries = 120
 
-# Use flake518 as wrapper to flake8, as the latter doesn't support this config file!
-[tool.flake8]
-doctests = true
-exclude = ".git,__pycache__"
-max-line-length = 120
-
 [tool.flakehell]
 max_line_length = 88
-
-[tool.flakehell.plugins]
-mccabe = ["+*"]
-pycodestyle = ["+*", "-E203", "-W503", "-W504"]
-pyflakes = ["+*"]
-pylint = ["+*"]
 
 [tool.sqlfluff.core]
 # dialect = "mysql"
@@ -88,27 +87,6 @@ comma_style = "leading"
 # Semi-colon formatting approach
 multiline_newline = true
 require_final_semicolon = true
-
-[tool.isort]
-# Make sure isort and black work together.
-profile = "black"
-# line_length = 120  # Use black profile instead.
-# Vertical Hanging Indent multi-line format.
-# multi_line_output = 3  # Use black profile instead.
-# Don't forces all `from imports` to appear on their own line.
-force_single_line = false
-# Use parentheses for line continuation on length limit instead of slashes.
-# use_parentheses = true  # Use black profile instead.
-# Ensures that if a star import is present, nothing else is imported from that namespace.
-combine_star = true
-# Includes a trailing comma on multi line imports that include parentheses.
-# include_trailing_comma = true  # Use black profile instead.
-# Force all imports to be sorted alphabetically within a section.
-force_alphabetical_sort_within_sections = true
-# Causes all non-indented imports to float to the top of the file having its imports sorted
-# (immediately below the top of file comment).
-float_to_top = true
-color_output = true
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
@@ -128,11 +106,118 @@ log_cli = true
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
 
-# pycodestyle doesn't support this config file!  # Use flake8 above instead.
-# [tool.pycodestyle]
-# max-line-length = 120
+[tool.ruff]
 
-[tool.pydocstyle]
+builtins = ["_"]
+
+# Avoiding flagging (and removing) `V101` from any `# noqa`
+# directives, despite Ruff's lack of support for `vulture`.
+external = ["V101"]
+
+select = [
+    "A",   # flake8-builtins
+    "ANN", # flake8-annotations
+    "ARG", # flake8-unused-arguments
+    "B",   # flake8-bugbear
+    "BLE", # flake8-blind-except
+    "C4",  # flake8-comprehensions
+    "C90", # mccabe
+    "COM", # flake8-commas
+    "D",   # pydocstyle
+    "DJ",  # flake8-django
+    "DTZ", # flake8-datetimez
+    "E",   # pycodestyle errors
+    "EM",  # flake8-errmsg
+    "ERA", # eradicate
+    "EXE", # flake8-executable
+    "F",   # pyflakes
+    "FBT", # flake8-boolean-trap
+    "G",   # flake8-logging-format
+    "I",   # isort
+    "ICN", # flake8-import-conventions
+    "INP", # flake8-no-pep420
+    "INT", # flake8-gettext
+    "ISC", # flake8-implicit-str-concat
+    "N",   # pep8-naming
+    "NPY", # numpy
+    "PD",  # pandas-vet
+    "PGH", # pygrep-hooks
+    "PIE", # flake8-pie
+    "PL",  # pylint
+    "PT",  # flake8-pytest-style
+    "PTH", # flake8-use-pathlib
+    "PYI", # flake8-pyi
+    "Q",   # flake8-quotes
+    "RET", # flake8-return
+    "RSE", # flake8-raise
+    "RUF", # ruff
+    "S",   # flake8-bandit
+    "SIM", # flake8-simplify
+    "SLF", # flake8-self
+    "T10", # flake8-debugger
+    "T20", # flake8-print
+    "TCH", # flake8-type-checking
+    "TID", # flake8-tidy-imports
+    "TRY", # tryceratops
+    "UP",  # pyupgrade
+    "W",   # pycodestyle warnings
+    "YTT", # flake8-2020
+]
+
+# FIXME: Review https://beta.ruff.rs/docs/rules/#flake8-2020-ytt for additional flake8 plugins to emulate.
+
+ignore = []
+
+# Allow autofix for all enabled rules (when `--fix`) is provided.
+fixable = ["A", "B", "C", "D", "E", "F", "G", "I", "N", "Q", "S", "T", "W", "ANN", "ARG", "BLE", "COM", "DJ", "DTZ", "EM", "ERA", "EXE", "FBT", "ICN", "INP", "ISC", "NPY", "PD", "PGH", "PIE", "PL", "PT", "PTH", "PYI", "RET", "RSE", "RUF", "SIM", "SLF", "TCH", "TID", "TRY", "UP", "YTT"]
+unfixable = []
+
+# Exclude a variety of commonly ignored directories.
+exclude = [
+    ".bzr",
+    ".direnv",
+    ".eggs",
+    ".git",
+    ".hg",
+    ".mypy_cache",
+    ".nox",
+    ".pants.d",
+    ".pytype",
+    ".ruff_cache",
+    ".svn",
+    ".tox",
+    ".venv",
+    "__pypackages__",
+    "_build",
+    "buck-out",
+    "build",
+    "dist",
+    "node_modules",
+    "venv",
+]
+
+# Same as Black.
+line-length = 88
+
+# Allow unused variables when underscore-prefixed.
+dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
+
+target-version = "py38"  # Keep in sync with tool.poetry.dependencies.python
+
+[tool.ruff.isort]
+
+[tool.ruff.pycodestyle]
+max-doc-length = 88  # Black.
+
+[tool.ruff.pydocstyle]
+convention = "google"  # Accepts: "google", "numpy", or "pep257".
+
+[tool.ruff.mccabe]
+# Unlike Flake8, default to a complexity level of 10.
+max-complexity = 10
+
+# FIXME: Do I need this anymore?
+# FIXME: Convert to tool.ruff.pylint.
 
 [tool.pylint.'MASTER']
 

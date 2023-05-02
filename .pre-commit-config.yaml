@@ -1,7 +1,7 @@
 ---
 repos:
     - repo: https://github.com/pre-commit/pre-commit-hooks
-      rev: v4.3.0
+      rev: v4.4.0
       hooks:
           # General
           - id: check-added-large-files
@@ -31,13 +31,13 @@ repos:
     # General
 
     - repo: https://github.com/pre-commit/mirrors-prettier
-      rev: v3.0.0-alpha.2
+      rev: v3.0.0-alpha.9-for-vscode
       hooks:
           - id: prettier
             stages: [commit]
 
     - repo: https://github.com/sirosen/texthooks
-      rev: 0.4.0
+      rev: 0.5.0
       hooks:
           - id: fix-smartquotes
           - id: fix-ligatures
@@ -45,7 +45,7 @@ repos:
     # Git
 
     - repo: https://github.com/jorisroovers/gitlint
-      rev: v0.17.0
+      rev: v0.19.1
       hooks:
           - id: gitlint
 
@@ -57,7 +57,7 @@ repos:
     #          - id: pyright
 
     - repo: https://github.com/psf/black
-      rev: 22.10.0
+      rev: 23.3.0
       hooks:
           - id: black
 
@@ -67,27 +67,27 @@ repos:
           - id: pylint
 
     - repo: https://github.com/hadialqattan/pycln
-      rev: v2.1.1 # Possible releases: https://github.com/hadialqattan/pycln/releases
+      rev: v2.1.3 # Possible releases: https://github.com/hadialqattan/pycln/releases
       hooks:
           - id: pycln
 
     - repo: https://github.com/PyCQA/bandit # Add badge to README!
-      rev: 1.7.4
+      rev: 1.7.5
       hooks:
           - id: bandit
 
     - repo: https://github.com/pycqa/pydocstyle
-      rev: 6.1.1
+      rev: 6.3.0
       hooks:
           - id: pydocstyle
 
     - repo: https://github.com/pre-commit/mirrors-mypy
-      rev: v0.982
+      rev: v1.2.0
       hooks:
           - id: mypy
 
     - repo: https://github.com/jazzband/pip-tools
-      rev: 6.9.0
+      rev: 6.13.0
       hooks:
           - id: pip-compile
             files: ^requirements/production\.(in|txt)$
@@ -99,7 +99,7 @@ repos:
           - id: absolufy-imports
 
     - repo: https://github.com/pre-commit/pygrep-hooks
-      rev: v1.9.0
+      rev: v1.10.0
       hooks:
           - id: python-check-blanket-noqa
           - id: python-check-blanket-type-ignore
@@ -113,7 +113,7 @@ repos:
           - id: text-unicode-replacement-char
 
     - repo: https://github.com/asottile/add-trailing-comma
-      rev: v2.3.0
+      rev: v2.4.0
       hooks:
           - id: add-trailing-comma
             args:
@@ -125,21 +125,21 @@ repos:
           - id: dead
 
     - repo: https://github.com/pycqa/isort
-      rev: 5.10.1
+      rev: 5.12.0
       hooks:
           - id: isort
             name: isort (python)
 
     - repo: https://github.com/asottile/pyupgrade
       # Automatically upgrade syntax for newer versions of the language.
-      rev: v3.1.0
+      rev: v3.3.2
       hooks:
           - id: pyupgrade
 
     # YAML
 
     - repo: https://github.com/adrienverge/yamllint
-      rev: v1.28.0
+      rev: v1.31.0
       hooks:
           - id: yamllint
             args: [-c=.yamllint.yml]
@@ -157,14 +157,14 @@ repos:
           - id: shfmt
 
     - repo: https://github.com/Lucas-C/pre-commit-hooks
-      rev: v1.3.1
+      rev: v1.5.1
       hooks:
           - id: remove-crlf
           - id: remove-tabs
             exclude: .git/COMMIT_EDITMSG
 
     - repo: https://github.com/sirosen/check-jsonschema
-      rev: 0.18.3
+      rev: 0.22.0
       hooks:
           - id: check-github-actions
           - id: check-github-workflows
@@ -180,12 +180,12 @@ repos:
             files: \.rej$
 
     - repo: https://github.com/zricethezav/gitleaks
-      rev: v8.15.0
+      rev: v8.16.3
       hooks:
           - id: gitleaks
 
     - repo: https://github.com/rhysd/actionlint
-      rev: v1.6.21
+      rev: v1.6.24
       hooks:
           - id: actionlint
     #    - repo: https://github.com/editorconfig-checker/editorconfig-checker.python
@@ -194,7 +194,7 @@ repos:
     #          - id: editorconfig-checker
 
     - repo: https://github.com/mxab/pre-commit-trivy.git
-      rev: v0.2.0
+      rev: v0.5.1
       hooks:
           - id: trivyfs-docker
             args:
