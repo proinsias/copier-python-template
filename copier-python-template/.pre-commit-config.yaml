@@ -407,3 +407,7 @@ repos:
                 - --ignore-unfixed
                 - . # last arg indicates the path/file to scan
             stages: [push]
+
+# https://github.com/igorshubovych/markdownlint-cli?
+# https://github.com/DavidAnson/markdownlint-cli2#pre-commit?
+# https://github.com/markdownlint/markdownlint?
