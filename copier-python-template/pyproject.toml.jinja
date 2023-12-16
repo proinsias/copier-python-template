@@ -29,7 +29,6 @@ python = "^3.8"
 absolufy-imports = "*"
 add-trailing-comma = "*"
 auto-walrus = "*"
-black = ">=22.6.0"
 blacken-docs = "*"
 darglint = "*"
 flynt = "*"
@@ -59,11 +58,6 @@ vulture = "*"
 
 [tool.bandit.assert_used]
 # skips = ['*_test.py', '*test_*.py', '*unittest.py']
-
-[tool.black]
-# extend-exclude = 'shared'
-# skip-string-normalization = true
-# target-version = ['py38']
 
 [tool.docformatter]
 recursive = true
@@ -166,7 +160,23 @@ select = [
 
 # FIXME: Review https://beta.ruff.rs/docs/rules/#flake8-2020-ytt for additional flake8 plugins to emulate.
 
-ignore = []
+ignore=[
+    "COM812",  # missing-trailing-comma
+    "COM819",  # prohibited-trailing-comma
+    "D206",  # indent-with-spaces
+    "D300",  # triple-single-quotes
+    "E111",  # indentation-with-invalid-multiple
+    "E114",  # indentation-with-invalid-multiple-comment
+    "E117",  # over-indented
+    "G004",  # flake8-logging-format
+    "ISC001",  # single-line-implicit-string-concatenation
+    "ISC002",  # multi-line-implicit-string-concatenation
+    "Q000",  # bad-quotes-inline-string
+    "Q001",  # bad-quotes-multiline-string
+    "Q002",  # bad-quotes-docstring
+    "Q003",  # avoidable-escaped-quote
+    "W191",  # tab-indentation
+]
 
 # Allow autofix for all enabled rules (when `--fix`) is provided.
 fixable = ["A", "B", "C", "D", "E", "F", "G", "I", "N", "Q", "S", "T", "W", "ANN", "ARG", "BLE", "COM", "DJ", "DTZ", "EM", "ERA", "EXE", "FBT", "ICN", "INP", "ISC", "NPY", "PD", "PGH", "PIE", "PL", "PT", "PTH", "PYI", "RET", "RSE", "RUF", "SIM", "SLF", "TCH", "TID", "TRY", "UP", "YTT"]
