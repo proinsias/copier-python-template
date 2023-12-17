@@ -1,11 +1,11 @@
 repo_name: proinsias/copier-python-template
-report_id: f0a06e023d0e90a418fb6b13f67b2e60
+report_id: e87b6da54aac6eed3e1f844aeac3df64
 repo_type: Public
-timestamp: '2023-11-13T01:27:50+00:00'
+timestamp: '2023-12-14T10:34:01+00:00'
 requested_by: proinsias
 provider: github
 branch: main
-detected_tools_count: 8
+detected_tools_count: 10
 tools:
 - name: Python
   description: A clear and powerful object-oriented programming language, comparable
@@ -27,6 +27,17 @@ tools:
   sub_category: Languages
   image_url: https://img.stackshare.io/service/989/ruby.png
   detection_source: Repo Metadata
+- name: pgvector
+  description: Open-source vector similarity search for Postgres
+  website_url: https://github.com/pgvector/pgvector/
+  open_source: false
+  hosted_saas: false
+  category: Data Stores
+  sub_category: Database Tools
+  image_url: https://img.stackshare.io/service/109221/default_b888cdf5617d936aa6aacf130911906955508639.png
+  detection_source: TGT/todo.txt
+  last_updated_by: Francis T. O'Donovan
+  last_updated_on: 2021-10-27 13:52:36.000000000 Z
 - name: Git
   description: Fast, scalable, distributed revision control system
   website_url: http://git-scm.com/
@@ -58,6 +69,17 @@ tools:
   detection_source: pyproject.toml
   last_updated_by: Francis T. O'Donovan
   last_updated_on: 2021-06-06 00:49:10.000000000 Z
+- name: LangChain
+  description: Build AI apps with LLMs through composability
+  website_url: https://github.com/hwchase17/langchain
+  open_source: true
+  hosted_saas: false
+  category: Communications
+  sub_category: Large Language Model Tools
+  image_url: https://img.stackshare.io/service/48790/default_5b6c6b73f1ff3775c85d2a1ba954cb87e30cbf13.jpg
+  detection_source: TGT/todo.txt
+  last_updated_by: Francis T. O'Donovan
+  last_updated_on: 2021-10-27 13:52:36.000000000 Z
 - name: Shell
   description: A shell is a text-based terminal, used for manipulating programs and
     files. Shell scripts typically manage program execution.
@@ -70,7 +92,7 @@ tools:
   detection_source: Repo Metadata
 - name: pytest
   description: 'Pytest: simple powerful testing with Python'
-  package_url: https://pypi.org/pytest
+  package_url: https://pypi.org/project/pytest
   version: 6.2.5
   license: MIT
   open_source: true
@@ -78,13 +100,13 @@ tools:
   category: Libraries
   sub_category: PyPI Packages
   image_url: https://img.stackshare.io/package/19843/default_4604ff5dcb7f4d9c7b3833591c2142493951b19c.png
-  detection_source_url: poetry.lock
+  detection_source_url: https://github.com/proinsias/copier-python-template/blob/main/poetry.lock
   detection_source: pyproject.toml
   last_updated_by: Francis T. O'Donovan
   last_updated_on: 2022-10-19 01:28:19.000000000 Z
 - name: yamllint
   description: A linter for YAML files
-  package_url: https://pypi.org/yamllint
+  package_url: https://pypi.org/project/yamllint
   version: 1.28.0
   license: GPL-3.0
   open_source: true
@@ -92,7 +114,7 @@ tools:
   category: Libraries
   sub_category: PyPI Packages
   image_url: https://img.stackshare.io/package/20506/default_dcfd16fdf7f5ec686bd8934c31e6383c6da8356b.png
-  detection_source_url: poetry.lock
+  detection_source_url: https://github.com/proinsias/copier-python-template/blob/main/poetry.lock
   detection_source: pyproject.toml
   last_updated_by: Francis T. O'Donovan
   last_updated_on: 2022-12-22 20:12:03.000000000 Z
