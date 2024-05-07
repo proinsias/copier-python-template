@@ -12,13 +12,13 @@ documentation = "https://github.com/proinsias/copier-python-template"
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.9"
+python = ">=3.9,<4.0"
 
 [tool.poetry.dev-dependencies]
-copier = "^5.1.0"
-pyright = "^1.1.275"
-pytest = "^6.2"
-yamllint = "^1.26.3"
+copier = ">=5.1.0"
+pyright = ">=1.1.275"
+pytest = ">=7.2.0"
+yamllint = ">=1.26.3"
 
 [tool.poetry.urls]
 "Bug Tracker" = "https://github.com/proinsias/copier-python-template/issues"
