@@ -21,7 +21,8 @@
     "python311Packages.isort@latest",
     "pyupgrade@latest",
     "shfmt@latest",
-    "cookiecutter@latest"
+    "cookiecutter@latest",
+    "uv@latest"
   ],
   "shell": {
     "init_hook": [

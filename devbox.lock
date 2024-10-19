@@ -1240,6 +1240,70 @@
           "store_path": "/nix/store/r2mk40zhzs984bmrynr4z2x2c3nvnp65-textlint-14.2.1"
         }
       }
+    },
+    "uv@latest": {
+      "last_modified": "2024-09-19T11:39:46Z",
+      "resolved": "github:NixOS/nixpkgs/268bb5090a3c6ac5e1615b38542a868b52ef8088#uv",
+      "source": "devbox-search",
+      "version": "0.4.11",
+      "systems": {
+        "aarch64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/mxpc49c07kdpfp8abr0clf9bhapsakpj-uv-0.4.11",
+              "default": true
+            },
+            {
+              "name": "dist",
+              "path": "/nix/store/6v6gyrykc5h2rarabqn3myac1zirawm4-uv-0.4.11-dist"
+            }
+          ],
+          "store_path": "/nix/store/mxpc49c07kdpfp8abr0clf9bhapsakpj-uv-0.4.11"
+        },
+        "aarch64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/cjw7qi11x137k7fn56dxrkgbsqj25p42-uv-0.4.11",
+              "default": true
+            },
+            {
+              "name": "dist",
+              "path": "/nix/store/d0fxyzn8zymvw5rivm7ixsa7i36agajw-uv-0.4.11-dist"
+            }
+          ],
+          "store_path": "/nix/store/cjw7qi11x137k7fn56dxrkgbsqj25p42-uv-0.4.11"
+        },
+        "x86_64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/pd2hb8p01zvd8shksyph2svhg9gxdp8b-uv-0.4.11",
+              "default": true
+            },
+            {
+              "name": "dist",
+              "path": "/nix/store/l3f1r34ywsqj0nz0r498z6cqdq2j40qm-uv-0.4.11-dist"
+            }
+          ],
+          "store_path": "/nix/store/pd2hb8p01zvd8shksyph2svhg9gxdp8b-uv-0.4.11"
+        },
+        "x86_64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/cs8zyvxj5mzbv6fqi5g28rm3mwr3i73l-uv-0.4.11",
+              "default": true
+            },
+            {
+              "name": "dist",
+              "path": "/nix/store/ydxshqyicy1xx00i1b9f3jmm37m2rshn-uv-0.4.11-dist"
+            }
+          ],
+          "store_path": "/nix/store/cs8zyvxj5mzbv6fqi5g28rm3mwr3i73l-uv-0.4.11"
+        }
+      }
     }
   }
 }
