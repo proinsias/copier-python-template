@@ -23,7 +23,11 @@
     "shfmt@latest",
     "cookiecutter@latest",
     "uv@latest",
-    "actionlint@latest"
+    "actionlint@latest",
+    "rubyPackages.rubocop@latest",
+    "yamllint@latest",
+    "curl@latest",
+    "safety-cli@latest"
   ],
   "shell": {
     "init_hook": ["echo 'Welcome to devbox!' > /dev/null"],
