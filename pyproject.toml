@@ -21,7 +21,3 @@ Homepage = "https://github.com/proinsias/copier-python-template"
 Repository = "https://github.com/proinsias/copier-python-template"
 Documentation = "https://github.com/proinsias/copier-python-template"
 "Bug Tracker" = "https://github.com/proinsias/copier-python-template/issues"
-
-[build-system]
-requires = ["uv"]
-build-backend = "uv.build"

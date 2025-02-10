@@ -24,10 +24,6 @@ Repository ="{{ repository_provider }}/{{ repository_namespace }}/{{ package_nam
 Documentation = "{{ repository_provider }}/{{ repository_namespace }}/{{ package_name_py }}/docs"
 "Bug Tracker" = "{{ repository_provider }}/{{ repository_namespace }}/{{ package_name_py }}/issues"
 
-[build-system]
-requires = ["uv"]
-build-backend = "uv.build"
-
 [dependency-groups]
 dev = [
     "absolufy-imports",
