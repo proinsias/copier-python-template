@@ -1,15 +1,12 @@
-[tool.poetry]
+[project]
 name = "{{ package_name_py }}"
 version = "0.0.1"
 description = "{{ project_description }}"
 license = "Unlicense"
 authors = ["{{ author_name }} <{{ author_email }}>"]
-maintainers = []
-repository = "{{ repository_provider }}/{{ repository_namespace }}/{{ package_name_py }}"
-documentation = "{{ repository_provider }}/{{ repository_namespace }}/{{ package_name_py }}/docs"
 readme = "README.md"
+requires-python = ">=3.9,<4.0"
 include = ["LICENSE"]
-packages = [{ include = "{{project_name}}", from = "src" }]
 keywords = []
 classifiers = [
     "Development Status :: 1 - Planning",
@@ -18,46 +15,62 @@ classifiers = [
     "Programming Language :: Python :: 3.8",
     "Programming Language :: Python :: 3.9",
 ] # https://pypi.org/classifiers/
+maintainers = []
+packages = ["{{project_name}}"]
 
-[tool.poetry.urls]
+[project.urls]
+Homepage = "{{ repository_provider }}/{{ repository_namespace }}/{{ package_name_py }}"
+Repository ="{{ repository_provider }}/{{ repository_namespace }}/{{ package_name_py }}"
+Documentation = "{{ repository_provider }}/{{ repository_namespace }}/{{ package_name_py }}/docs"
 "Bug Tracker" = "{{ repository_provider }}/{{ repository_namespace }}/{{ package_name_py }}/issues"
 
-[tool.poetry.dependencies]
-python = "^3.8"
+[build-system]
+requires = ["uv"]
+build-backend = "uv.build"
 
-[tool.poetry.dev-dependencies]
-absolufy-imports = "*"
-add-trailing-comma = "*"
-auto-walrus = "*"
-blacken-docs = "*"
-darglint = "*"
-flynt = "*"
-gitlint = "*"
+[dependency-groups]
+dev = [
+    "absolufy-imports",
+    "add-trailing-comma",
+    "auto-walrus",
+    "blacken-docs",
+    "darglint",
+    "flynt",
+    "gitlint",
+    "mypy",
+    "poethepoet",
+    "pre-commit",
+    "pycln",
+    "pytest>=6.2.1",  # Avoid safety #39253 vulnerability (CVE-2020-29651).
+    "pytest-black",
+    "pytest-mock>=3.8.2",
+    "pytest-profiling",
+    "pytest-sugar",
+    "pytest-xdist",
+    "refurb",
+    "ruff",
+    "sqlfluff",
+    "texthooks",
 {% if docs -%}
-mkdocs = "*"
-mkdocs-material = "*"
+    "mkdocs",
+    "mkdocs-material",
 {%- endif %}
-mypy = "*"
-poethepoet = "*"
-pre-commit = "*"
-pycln = "*"
-pytest = ">=6.2.1"  # Avoid safety #39253 vulnerability (CVE-2020-29651).
-pytest-black = "*"
-pytest-mock = ">=3.8.2"
-pytest-profiling = "*"
-pytest-sugar = "*"
-pytest-xdist = "*"
-refurb = "*"
-ruff = "*"
-sqlfluff = "*"
-texthooks = "*"
-vulture = "*"
+    "vulture"
+]
+
+# FIXME:
+# Add tox.ini stuff here. Including tox config itself!
+# black, coverage, pytest, mypy, vulture,
 
 [tool.bandit]
 # exclude_dirs = [".venv", "shared"]
 
 [tool.bandit.assert_used]
 # skips = ['*_test.py', '*test_*.py', '*unittest.py']
+
+[tool.darglint]
+docstring_style = 'google'  # Default. Alternatives are 'sphinx' and 'numpy'.
+strictness = 'full'  # Default. Alternatives are 'short' and 'long'.
 
 [tool.docformatter]
 recursive = true
