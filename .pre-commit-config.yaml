@@ -204,3 +204,11 @@ repos:
       rev: v1.7.3
       hooks:
           - id: actionlint
+
+    - repo: https://github.com/lycheeverse/lychee.git
+      rev: v0.15.1
+      hooks:
+          - id: lychee
+          # Optionally include additional CLI arguments
+          # args: ["--no-progress", "--exclude", "file://"]
+

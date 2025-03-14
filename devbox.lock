@@ -177,6 +177,9 @@
         }
       }
     },
+    "github:NixOS/nixpkgs/nixpkgs-unstable": {
+      "resolved": "github:NixOS/nixpkgs/573c650e8a14b2faa0041645ab18aed7e60f0c9a?lastModified=1741865919&narHash=sha256-4thdbnP6dlbdq%2BqZWTsm4ffAwoS8Tiq1YResB%2BRP6WE%3D"
+    },
     "gitlint@latest": {
       "last_modified": "2024-09-10T15:01:03Z",
       "resolved": "github:NixOS/nixpkgs/5ed627539ac84809c78b2dd6d26a5cebeb5ae269#gitlint",
@@ -286,6 +289,54 @@
             }
           ],
           "store_path": "/nix/store/f47s9a7s5sdqv04s587rhhjnx2kijzpq-hub-unstable-2022-12-01"
+        }
+      }
+    },
+    "lychee@latest": {
+      "last_modified": "2025-03-11T17:52:14Z",
+      "resolved": "github:NixOS/nixpkgs/0d534853a55b5d02a4ababa1d71921ce8f0aee4c#lychee",
+      "source": "devbox-search",
+      "version": "0.18.1",
+      "systems": {
+        "aarch64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/67h03zniqnslljp2crr2b2wgj49k13bs-lychee-0.18.1",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/67h03zniqnslljp2crr2b2wgj49k13bs-lychee-0.18.1"
+        },
+        "aarch64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/rsj7w9r7lv8fw9rhfxxmyq062cwgn81w-lychee-0.18.1",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/rsj7w9r7lv8fw9rhfxxmyq062cwgn81w-lychee-0.18.1"
+        },
+        "x86_64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/y07hva619ydivmrmq71b6n56bg01rr5f-lychee-0.18.1",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/y07hva619ydivmrmq71b6n56bg01rr5f-lychee-0.18.1"
+        },
+        "x86_64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/g9afj6snh8lfad41vybrhvv1h166xndq-lychee-0.18.1",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/g9afj6snh8lfad41vybrhvv1h166xndq-lychee-0.18.1"
         }
       }
     },

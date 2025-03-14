@@ -23,7 +23,8 @@
     "shfmt@latest",
     "cookiecutter@latest",
     "uv@latest",
-    "actionlint@latest"
+    "actionlint@latest",
+    "lychee@latest"
   ],
   "shell": {
     "init_hook": ["echo 'Welcome to devbox!' > /dev/null"],

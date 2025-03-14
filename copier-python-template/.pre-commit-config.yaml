@@ -148,11 +148,8 @@ repos:
       rev: 1.7.0
       hooks:
           - id: interrogate
-
-    - repo: https://github.com/terrencepreilly/darglint
-      rev: v1.8.1
-      hooks:
-          - id: darglint
+            args:
+                - --verbose
 
     - repo: https://github.com/ikamensh/flynt/
       rev: "1.0.1"
@@ -419,3 +416,12 @@ repos:
 # https://github.com/igorshubovych/markdownlint-cli?
 # https://github.com/DavidAnson/markdownlint-cli2#pre-commit?
 # https://github.com/markdownlint/markdownlint?
+
+
+    - repo: https://github.com/lycheeverse/lychee.git
+      rev: v0.15.1
+      hooks:
+          - id: lychee
+          # Optionally include additional CLI arguments
+          # args: ["--no-progress", "--exclude", "file://"]
+
