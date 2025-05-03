@@ -425,3 +425,7 @@ repos:
           # Optionally include additional CLI arguments
           # args: ["--no-progress", "--exclude", "file://"]
 
+    - repo: https://codeberg.org/frnmst/md-toc
+      rev: 9.0.0
+      hooks:
+          - id: md-toc
