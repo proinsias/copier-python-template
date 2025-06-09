@@ -1,15 +1,15 @@
 ---
 default_install_hook_types:
-  - commit-msg
-  - prepare-commit-msg
-  - pre-commit
-  - pre-merge-commit
-  - pre-push
-  - pre-rebase
-  - post-checkout
-  - post-commit
-  - post-merge
-  - post-rewrite
+    - commit-msg
+    - prepare-commit-msg
+    - pre-commit
+    - pre-merge-commit
+    - pre-push
+    - pre-rebase
+    - post-checkout
+    - post-commit
+    - post-merge
+    - post-rewrite
 
 repos:
     - repo: https://github.com/pre-commit/pre-commit-hooks
@@ -84,13 +84,13 @@ repos:
           - id: bandit
 
     - repo: https://github.com/astral-sh/ruff-pre-commit
-      rev: 'v0.7.0'
+      rev: "v0.7.0"
       hooks:
           - id: ruff
             args: [--fix, --force-exclude, --exit-non-zero-on-fix]
-            types_or: [python, pyi, jupyter]  # Run on notebooks too.
+            types_or: [python, pyi, jupyter] # Run on notebooks too.
           - id: ruff-format
-            types_or: [python, pyi, jupyter]  # Run on notebooks too.
+            types_or: [python, pyi, jupyter] # Run on notebooks too.
 
     - repo: https://github.com/pycqa/pydocstyle
       rev: 6.3.0
@@ -168,9 +168,17 @@ repos:
           # - id: git-dirty  # Configure in .gitignore
           - id: script-must-have-extension
           - id: script-must-not-have-extension
+
+    - repo: https://github.com/scop/pre-commit-shfmt
+      rev: v3.11.0-1
+      hooks:
+          - id: shfmt
+
+    - repo: https://github.com/koalaman/shellcheck-precommit
+      rev: v0.10.0
+      hooks:
           - id: shellcheck
             args: [--external-sources, --format=gcc, --shell=bash]
-          - id: shfmt
 
     - repo: https://github.com/Lucas-C/pre-commit-hooks
       rev: v1.5.5
@@ -209,6 +217,4 @@ repos:
       rev: v0.15.1
       hooks:
           - id: lychee
-          # Optionally include additional CLI arguments
-          # args: ["--no-progress", "--exclude", "file://"]
-
+            args: ["--cache", "--suggest"]

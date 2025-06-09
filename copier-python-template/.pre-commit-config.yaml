@@ -56,8 +56,7 @@ repos:
       rev: v0.15.1
       hooks:
           - id: lychee
-            args: ["--suggest"]
-          # args: ["--no-progress", "--exclude", "file://"]
+            args: ["--cache", "--suggest"]
 
     # - repo: https://github.com/Yelp/detect-secrets
     #   rev: v1.0.3
@@ -317,9 +316,17 @@ repos:
           # - id: rubocop
           - id: script-must-have-extension
           - id: script-must-not-have-extension
+
+    - repo: https://github.com/scop/pre-commit-shfmt
+      rev: v3.11.0-1
+      hooks:
+          - id: shfmt
+
+    - repo: https://github.com/koalaman/shellcheck-precommit
+      rev: v0.10.0
+      hooks:
           - id: shellcheck
             args: [--external-sources, --format=gcc, --shell=bash]
-          - id: shfmt
 
     - repo: https://github.com/Lucas-C/pre-commit-hooks
       rev: v1.5.5
@@ -413,10 +420,9 @@ repos:
                 - --ignore-unfixed
                 - . # last arg indicates the path/file to scan
             stages: [pre-push]
-# https://github.com/igorshubovych/markdownlint-cli?
-# https://github.com/DavidAnson/markdownlint-cli2#pre-commit?
-# https://github.com/markdownlint/markdownlint?
-
+    # https://github.com/igorshubovych/markdownlint-cli?
+    # https://github.com/DavidAnson/markdownlint-cli2#pre-commit?
+    # https://github.com/markdownlint/markdownlint?
 
     - repo: https://github.com/lycheeverse/lychee.git
       rev: v0.15.1
