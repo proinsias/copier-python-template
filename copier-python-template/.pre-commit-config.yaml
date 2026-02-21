@@ -58,13 +58,6 @@ repos:
           - id: lychee
             args: ["--cache", "--suggest"]
 
-    # - repo: https://github.com/Yelp/detect-secrets
-    #   rev: v1.0.3
-    #   hooks:
-    #     - id: detect-secrets
-    #       args: ['--baseline', '.secrets.baseline']
-    #       exclude: package.lock.json
-
     - repo: https://github.com/sirosen/texthooks
       rev: 0.6.7
       hooks:
@@ -125,22 +118,6 @@ repos:
     #   hooks:
     #     - id: jinjalint
 
-    # - repo: https://github.com/executablebooks/mdformat
-    #   rev: 0.7.14
-    #   hooks:
-    #       - id: mdformat
-    #         additional_dependencies:
-    #             - mdformat-beautysh
-    #             - mdformat-black
-    #             - mdformat-config
-    #             - mdformat-deflist
-    #             # - mdformat-frontmatter  # Breaks.
-    #             - mdformat-footnote
-    #             - mdformat-gfm
-    #             - mdformat-shfmt
-    #             - mdformat-tables
-    #             - mdformat-toc
-
     # Python
 
     - repo: https://github.com/econchick/interrogate
@@ -155,22 +132,10 @@ repos:
       hooks:
           - id: flynt
 
-    - repo: https://github.com/asottile/blacken-docs # FIXME: ruff format?
-      rev: 1.19.0
-      hooks:
-          - id: blacken-docs
-
     - repo: https://github.com/dosisod/refurb
       rev: v2.0.0
       hooks:
           - id: refurb
-
-    # # Broken for now.
-    # - repo: https://github.com/PyCQA/docformatter
-    #   rev: v1.7.5
-    #   hooks:
-    #       - id: docformatter
-    #         args: ['--in-place', '--config', './pyproject.toml']
 
     - repo: https://github.com/HunterMcGushion/docstr_coverage
       rev: v2.3.2
@@ -201,15 +166,10 @@ repos:
       hooks:
           - id: bandit
 
-    - repo: https://github.com/asottile/dead
-      rev: v1.5.2
+    - repo: https://github.com/albertas/deadcode
+      rev: 2.4.1
       hooks:
-          - id: dead
-
-    - repo: https://github.com/jendrikseipp/vulture
-      rev: v2.13
-      hooks:
-          - id: vulture
+          - id: deadcode
 
     - repo: https://github.com/hadialqattan/pycln
       rev: v2.4.0 # Possible releases: https://github.com/hadialqattan/pycln/releases
@@ -296,15 +256,10 @@ repos:
 
     # Mixed
 
-    - repo: https://github.com/kraymer/cesar
-      rev: v1.0.0
-      hooks:
-          - id: cesar
-
     - repo: https://github.com/jumanjihouse/pre-commit-hooks
       rev: 3.0.0
       hooks:
-          # - id: bundler-audit  # FIXME: Fix ruby hooks
+          # - id: bundler-audit
           # - id: check-mailmap
           # - id: fasterer
           # - id: forbid-binary
@@ -342,10 +297,14 @@ repos:
           - id: check-github-workflows
           - id: check-readthedocs
 
-    - repo: https://github.com/zricethezav/gitleaks
-      rev: v8.21.1
+    - repo: https://github.com/sirwart/ripsecrets
+      rev: v0.1.11 # Use latest tag on GitHub
       hooks:
-          - id: gitleaks
+          - id: ripsecrets
+          # uncomment to check additional patterns
+          # args:
+          # - --additional-pattern 'mytoken*'
+          # - --additional-pattern 'mykey*'
 
     - repo: https://github.com/rhysd/actionlint
       rev: v1.7.3
@@ -362,76 +321,9 @@ repos:
       hooks:
           - id: cython-lint
 
-    - repo: https://github.com/RyoWakabayashi/pre-commit-mirrors-textlint
-      rev: v12.2.1
-      hooks:
-          - id: textlint
-            additional_dependencies:
-                [
-                    "textlint",
-                    "textlint-plugin-latex2e",
-                    "textlint-filter-rule-comments",
-                    "textlint-rule-alex",
-                    "textlint-rule-apostrophe",
-                    "textlint-rule-common-misspellings",
-                    "textlint-rule-diacritics",
-                    "textlint-rule-doubled-spaces",
-                    "textlint-rule-editorconfig",
-                    "textlint-rule-en-capitalization",
-                    "textlint-rule-en-spell",
-                    "textlint-rule-max-number-of-lines",
-                    "textlint-rule-no-dead-link",
-                    "textlint-rule-no-empty-section",
-                    "textlint-rule-no-start-duplicated-conjunction",
-                    "textlint-rule-no-todo",
-                    "textlint-rule-stop-words",
-                    "textlint-rule-terminology",
-                    "textlint-rule-write-good",
-                    "textlint-rule-unexpanded-acronym",
-                    "@textlint-rule/textlint-rule-no-duplicate-abbr",
-                    "@textlint-rule/textlint-rule-no-invalid-control-character",
-                ]
-
-    - repo: https://github.com/oxsecurity/megalinter
-      rev: v8.1.0
-      hooks:
-          - id: megalinter-incremental # Faster, less thorough
-            stages:
-                - pre-commit
-          - id: megalinter-full # Slower, more thorough
-            stages:
-                - pre-push
-
-    - repo: https://github.com/streetsidesoftware/cspell-cli
-      rev: v8.15.1
-      hooks:
-          - id: cspell
-
-    - repo: https://github.com/bridgecrewio/checkov/
-      rev: 3.2.267
-      hooks:
-          - id: checkov
-
-    - repo: https://github.com/mxab/pre-commit-trivy.git
-      rev: v0.12.0
-      hooks:
-          - id: trivyfs-docker
-            args:
-                - --ignore-unfixed
-                - . # last arg indicates the path/file to scan
-            stages: [pre-push]
-    # https://github.com/igorshubovych/markdownlint-cli?
-    # https://github.com/DavidAnson/markdownlint-cli2#pre-commit?
-    # https://github.com/markdownlint/markdownlint?
-
     - repo: https://github.com/lycheeverse/lychee.git
       rev: v0.15.1
       hooks:
           - id: lychee
           # Optionally include additional CLI arguments
           # args: ["--no-progress", "--exclude", "file://"]
-
-    - repo: https://codeberg.org/frnmst/md-toc
-      rev: 9.0.0
-      hooks:
-          - id: md-toc
