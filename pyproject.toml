@@ -21,3 +21,12 @@ Homepage = "https://github.com/proinsias/copier-python-template"
 Repository = "https://github.com/proinsias/copier-python-template"
 Documentation = "https://github.com/proinsias/copier-python-template"
 "Bug Tracker" = "https://github.com/proinsias/copier-python-template/issues"
+
+[tool.ruff.lint]
+# Allow unused variables when underscore-prefixed.
+dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
+select = ["ALL", "I"]
+# Allow fix for all enabled rules (when `--fix` is provided)
+fixable = ["ALL"]
+# Optionally, list rules that should never be fixed automatically
+unfixable = []

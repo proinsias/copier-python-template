@@ -25,7 +25,6 @@ repos:
           - id: check-toml
           - id: check-xml
           - id: check-yaml
-          - id: detect-private-key
           - id: double-quote-string-fixer
           - id: end-of-file-fixer
           - id: mixed-line-ending # Replaces or checks mixed line ending.
@@ -63,25 +62,35 @@ repos:
 
     # Python
 
-    #    - repo: https://github.com/RobertCraigie/pyright-python
-    #      rev: v1.1.237
-    #      hooks:
-    #          - id: pyright
+    - repo: https://github.com/astral-sh/uv-pre-commit
+      rev: 0.10.5
+      hooks:
+          # Keep uv.lock file up to date
+          - id: uv-lock
+
+    - repo: https://github.com/ewjoachim/sync-pre-commit-with-uv
+      rev: 1.1.0
+      hooks:
+          # Synchronizes versions between pre-commit and uv
+          - id: sync
+
+    - repo: https://github.com/RobertCraigie/pyright-python
+      rev: v1.1.237
+      hooks:
+          - id: pyright
+            # Use project venv Python instead of isolated pre-commit venv
+            language: system
 
     - repo: https://github.com/pre-commit/mirrors-pylint
       rev: v3.0.0a5
       hooks:
           - id: pylint
 
-    - repo: https://github.com/hadialqattan/pycln
-      rev: v2.4.0 # Possible releases: https://github.com/hadialqattan/pycln/releases
-      hooks:
-          - id: pycln
-
     - repo: https://github.com/PyCQA/bandit # Add badge to README!
       rev: 1.7.10
       hooks:
           - id: bandit
+            args: [--configfile, pyproject.toml]
 
     - repo: https://github.com/astral-sh/ruff-pre-commit
       rev: "v0.7.0"
@@ -117,40 +126,16 @@ repos:
     - repo: https://github.com/pre-commit/pygrep-hooks
       rev: v1.10.0
       hooks:
-          - id: python-check-blanket-noqa
-          - id: python-check-blanket-type-ignore
-          - id: python-check-mock-methods
-          - id: python-no-eval
           - id: python-no-log-warn
-          - id: python-use-type-annotations
           - id: rst-backticks
           - id: rst-directive-colons
           - id: rst-inline-touching-normal
           - id: text-unicode-replacement-char
 
-    - repo: https://github.com/asottile/add-trailing-comma
-      rev: v3.1.0
-      hooks:
-          - id: add-trailing-comma
-            args:
-                - --py36-plus
-
     - repo: https://github.com/albertas/deadcode
       rev: 2.4.1
       hooks:
           - id: deadcode
-
-    - repo: https://github.com/pycqa/isort
-      rev: 5.13.2
-      hooks:
-          - id: isort
-            name: isort (python)
-
-    - repo: https://github.com/asottile/pyupgrade
-      # Automatically upgrade syntax for newer versions of the language.
-      rev: v3.18.0
-      hooks:
-          - id: pyupgrade
 
     # YAML
 

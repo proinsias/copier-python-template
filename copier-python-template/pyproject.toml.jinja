@@ -27,23 +27,18 @@ Documentation = "{{ repository_provider }}/{{ repository_namespace }}/{{ package
 [dependency-groups]
 dev = [
     "absolufy-imports",
-    "add-trailing-comma",
-    "auto-walrus",
     "blacken-docs",
     "darglint",
-    "flynt",
     "gitlint",
     "mypy",
     "poethepoet",
     "pre-commit",
-    "pycln",
     "pytest>=6.2.1",  # Avoid safety #39253 vulnerability (CVE-2020-29651).
     "pytest-black",
     "pytest-mock>=3.8.2",
     "pytest-profiling",
     "pytest-sugar",
     "pytest-xdist",
-    "refurb",
     "ruff",
     "sqlfluff",
     "texthooks",
@@ -51,12 +46,11 @@ dev = [
     "mkdocs",
     "mkdocs-material",
 {%- endif %}
-    "vulture"
 ]
 
 # FIXME:
 # Add tox.ini stuff here. Including tox config itself!
-# black, coverage, pytest, mypy, vulture,
+# coverage, pytest, mypy,
 
 [tool.bandit]
 # exclude_dirs = [".venv", "shared"]
@@ -113,80 +107,6 @@ build-backend = "poetry.core.masonry.api"
 
 builtins = ["_"]
 
-# Avoiding flagging (and removing) `V101` from any `# noqa`
-# directives, despite Ruff's lack of support for `vulture`.
-external = ["V101"]
-
-select = [
-    "A",   # flake8-builtins
-    "ANN", # flake8-annotations
-    "ARG", # flake8-unused-arguments
-    "B",   # flake8-bugbear
-    "BLE", # flake8-blind-except
-    "C4",  # flake8-comprehensions
-    "C90", # mccabe
-    "COM", # flake8-commas
-    "D",   # pydocstyle
-    "DJ",  # flake8-django
-    "DTZ", # flake8-datetimez
-    "E",   # pycodestyle errors
-    "EM",  # flake8-errmsg
-    "ERA", # eradicate
-    "EXE", # flake8-executable
-    "F",   # pyflakes
-    "FBT", # flake8-boolean-trap
-    "G",   # flake8-logging-format
-    "I",   # isort
-    "ICN", # flake8-import-conventions
-    "INP", # flake8-no-pep420
-    "INT", # flake8-gettext
-    "ISC", # flake8-implicit-str-concat
-    "N",   # pep8-naming
-    "NPY", # numpy
-    "PD",  # pandas-vet
-    "PGH", # pygrep-hooks
-    "PIE", # flake8-pie
-    "PL",  # pylint
-    "PT",  # flake8-pytest-style
-    "PTH", # flake8-use-pathlib
-    "PYI", # flake8-pyi
-    "Q",   # flake8-quotes
-    "RET", # flake8-return
-    "RSE", # flake8-raise
-    "RUF", # ruff
-    "S",   # flake8-bandit
-    "SIM", # flake8-simplify
-    "SLF", # flake8-self
-    "T10", # flake8-debugger
-    "T20", # flake8-print
-    "TCH", # flake8-type-checking
-    "TID", # flake8-tidy-imports
-    "TRY", # tryceratops
-    "UP",  # pyupgrade
-    "W",   # pycodestyle warnings
-    "YTT", # flake8-2020
-]
-
-# FIXME: Review https://beta.ruff.rs/docs/rules/#flake8-2020-ytt for additional flake8 plugins to emulate.
-
-ignore=[
-    "COM812",  # missing-trailing-comma
-    "COM819",  # prohibited-trailing-comma
-    "D206",  # indent-with-spaces
-    "D300",  # triple-single-quotes
-    "E111",  # indentation-with-invalid-multiple
-    "E114",  # indentation-with-invalid-multiple-comment
-    "E117",  # over-indented
-    "G004",  # flake8-logging-format
-    "ISC001",  # single-line-implicit-string-concatenation
-    "ISC002",  # multi-line-implicit-string-concatenation
-    "Q000",  # bad-quotes-inline-string
-    "Q001",  # bad-quotes-multiline-string
-    "Q002",  # bad-quotes-docstring
-    "Q003",  # avoidable-escaped-quote
-    "W191",  # tab-indentation
-]
-
 # Allow autofix for all enabled rules (when `--fix`) is provided.
 fixable = ["A", "B", "C", "D", "E", "F", "G", "I", "N", "Q", "S", "T", "W", "ANN", "ARG", "BLE", "COM", "DJ", "DTZ", "EM", "ERA", "EXE", "FBT", "ICN", "INP", "ISC", "NPY", "PD", "PGH", "PIE", "PL", "PT", "PTH", "PYI", "RET", "RSE", "RUF", "SIM", "SLF", "TCH", "TID", "TRY", "UP", "YTT"]
 unfixable = []
@@ -224,6 +144,15 @@ dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
 target-version = "py38"  # Keep in sync with tool.poetry.dependencies.python
 
 [tool.ruff.isort]
+
+[tool.ruff.lint]
+# Allow unused variables when underscore-prefixed.
+dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
+select = ["ALL", "I"]
+# Allow fix for all enabled rules (when `--fix` is provided)
+fixable = ["ALL"]
+# Optionally, list rules that should never be fixed automatically
+unfixable = []
 
 [tool.ruff.pycodestyle]
 max-doc-length = 88  # Black.
