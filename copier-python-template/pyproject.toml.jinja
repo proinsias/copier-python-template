@@ -143,6 +143,9 @@ dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
 
 target-version = "py38"  # Keep in sync with tool.poetry.dependencies.python
 
+# Find and format code blocks in Markdown files
+extend-include = ["*.md"]
+
 [tool.ruff.isort]
 
 [tool.ruff.lint]
