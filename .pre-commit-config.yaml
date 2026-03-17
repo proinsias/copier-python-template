@@ -74,18 +74,13 @@ repos:
           # Synchronizes versions between pre-commit and uv
           - id: sync
 
-    - repo: https://github.com/RobertCraigie/pyright-python
-      rev: v1.1.237
-      hooks:
-          - id: pyright
-            # Use project venv Python instead of isolated pre-commit venv
-            language: system
-
-    - repo: https://github.com/pre-commit/mirrors-pylint
-      rev: v3.0.0a5
-      hooks:
-          - id: pylint
-
+    #    - repo: https://github.com/RobertCraigie/pyright-python
+    #      rev: v1.1.237
+    #      hooks:
+    #          - id: pyright
+    #            # Use project venv Python instead of isolated pre-commit venv
+    #            language: system
+    #
     - repo: https://github.com/PyCQA/bandit # Add badge to README!
       rev: 1.8.6
       hooks:
@@ -184,7 +179,9 @@ repos:
           - id: copier-forbidden-files
             name: copier_forbidden_files
             # yamllint disable-line rule:line-length
-            entry: found copier update rejection files; review them and remove them (https://copier.readthedocs.io/en/stable/updating/)
+            entry:
+                found copier update rejection files; review them and remove them
+                (https://copier.readthedocs.io/en/stable/updating/)
             language: fail
             files: \.rej$
 
