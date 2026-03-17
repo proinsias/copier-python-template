@@ -13,7 +13,7 @@ default_install_hook_types:
 
 repos:
     - repo: https://github.com/pre-commit/pre-commit-hooks
-      rev: v5.0.0
+      rev: v6.0.0
       hooks:
           # General
           - id: check-added-large-files
@@ -48,7 +48,7 @@ repos:
             stages: [pre-commit]
 
     - repo: https://github.com/sirosen/texthooks
-      rev: 0.6.7
+      rev: 0.7.1
       hooks:
           - id: fix-smartquotes
           - id: fix-ligatures
@@ -87,13 +87,13 @@ repos:
           - id: pylint
 
     - repo: https://github.com/PyCQA/bandit # Add badge to README!
-      rev: 1.7.10
+      rev: 1.8.6
       hooks:
           - id: bandit
             args: [--configfile, pyproject.toml]
 
     - repo: https://github.com/astral-sh/ruff-pre-commit
-      rev: "v0.7.0"
+      rev: "v0.14.0"
       hooks:
           - id: ruff
             args: [--fix, --force-exclude, --exit-non-zero-on-fix]
@@ -107,12 +107,12 @@ repos:
           - id: pydocstyle
 
     - repo: https://github.com/pre-commit/mirrors-mypy
-      rev: v1.12.0
+      rev: v1.18.2
       hooks:
           - id: mypy
 
     - repo: https://github.com/jazzband/pip-tools
-      rev: 7.4.1
+      rev: v7.5.1
       hooks:
           - id: pip-compile
             files: ^requirements/production\.(in|txt)$
@@ -140,7 +140,7 @@ repos:
     # YAML
 
     - repo: https://github.com/adrienverge/yamllint
-      rev: v1.35.1
+      rev: v1.37.1
       hooks:
           - id: yamllint
             args: [-c=.yamllint.yml]
@@ -155,12 +155,12 @@ repos:
           - id: script-must-not-have-extension
 
     - repo: https://github.com/scop/pre-commit-shfmt
-      rev: v3.11.0-1
+      rev: v3.12.0-2
       hooks:
           - id: shfmt
 
     - repo: https://github.com/koalaman/shellcheck-precommit
-      rev: v0.10.0
+      rev: v0.11.0
       hooks:
           - id: shellcheck
             args: [--external-sources, --format=gcc, --shell=bash]
@@ -173,7 +173,7 @@ repos:
             exclude: .git/COMMIT_EDITMSG
 
     - repo: https://github.com/sirosen/check-jsonschema
-      rev: 0.29.4
+      rev: 0.34.0
       hooks:
           - id: check-github-actions
           - id: check-github-workflows
@@ -198,12 +198,12 @@ repos:
           # - --additional-pattern 'mykey*'
 
     - repo: https://github.com/rhysd/actionlint
-      rev: v1.7.3
+      rev: v1.7.7
       hooks:
           - id: actionlint
 
     - repo: https://github.com/lycheeverse/lychee.git
-      rev: v0.15.1
+      rev: nightly
       hooks:
           - id: lychee
             args: ["--cache", "--suggest"]

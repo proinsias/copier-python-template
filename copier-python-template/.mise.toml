@@ -1,0 +1,40 @@
+# Don't put credentials or other secrets into this shared file!
+[hooks]
+enter = "mise i -q"
+
+[settings]
+env_file = ".env"
+experimental = true
+gpg_verify = true
+idiomatic_version_file_enable_tools = ["python"]
+python.uv_venv_auto = true  # Use uv venv.
+status.missing_tools = "always"
+status.show_env = true
+
+# "nodePackages.cspell@latest",
+# "python310Packages.editorconfig@latest",
+# "hub@latest",
+# "gitlint@latest",
+# "markdown-link-check@latest",
+# "markdownlint-cli@latest",
+# "mdl@latest",
+# "pre-commit@latest",
+# "nodePackages.prettier@latest",
+# "shellcheck@latest",
+# "textlint@latest",
+# "pylint@latest",
+# "bandit@latest",
+# "ruff@latest",
+# "python311Packages.pydocstyle@latest",
+# "mypy@latest",
+# "python311Packages.add-trailing-comma@latest",
+# "python311Packages.isort@latest",
+# "pyupgrade@latest",
+# "shfmt@latest",
+# "cookiecutter@latest",
+# "uv@latest",
+# "actionlint@latest",
+# "rubyPackages.rubocop@latest",
+# "yamllint@latest",
+# "curl@latest",
+# "safety-cli@latest"
