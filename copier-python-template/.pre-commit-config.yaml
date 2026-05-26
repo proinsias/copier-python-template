@@ -17,7 +17,7 @@ default_install_hook_types:
 
 repos:
     - repo: https://github.com/tsvikas/sync-with-uv
-      rev: v0.4.0  # replace with the latest version
+      rev: v0.4.0 # replace with the latest version
       hooks:
           - id: sync-with-uv
 
@@ -57,7 +57,7 @@ repos:
     # General
 
     - repo: https://github.com/lycheeverse/lychee.git
-      rev: nightly
+      rev: lychee-v0.23.0
       hooks:
           - id: lychee
             args: ["--cache", "--suggest"]
@@ -161,7 +161,7 @@ repos:
       rev: 1.9.4
       hooks:
           - id: bandit
-            arg: [--configfile, pyproject.toml]
+            args: [--configfile, pyproject.toml]
 
     - repo: https://github.com/albertas/deadcode
       rev: 2.4.1
@@ -212,6 +212,15 @@ repos:
             types_or: [python, pyi, jupyter, markdown] # Run on notebooks too.
           - id: ruff-format
             types_or: [python, pyi, jupyter, markdown] # Run on notebooks too.
+
+    - repo: local
+      hooks:
+          - id: pyscn
+            name: pyscn check (staged)
+            entry: bash -c 'uvx pyscn@latest check --quiet "$@"' --
+            language: python
+            additional_dependencies: [pyscn]
+            files: '\.py$'
 
     # YAML
 
@@ -307,10 +316,3 @@ repos:
       rev: v0.19.0
       hooks:
           - id: cython-lint
-
-    - repo: https://github.com/lycheeverse/lychee.git
-      rev: nightly
-      hooks:
-          - id: lychee
-          # Optionally include additional CLI arguments
-          # args: ["--no-progress", "--exclude", "file://"]
