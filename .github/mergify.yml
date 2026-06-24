@@ -1,0 +1,48 @@
+---
+pull_request_rules:
+  - name: Auto-merge when approved by maintainer
+    conditions:
+      - base = main
+      - "#approved-reviews-by >= 1"
+      - "#changes-requested-reviews-by = 0"
+      - -draft
+      - -label = do-not-merge
+    actions:
+      merge:
+        method: squash
+
+  - name: Auto-merge dependabot and renovate PRs
+    conditions:
+      - base = main
+      - or:
+          - author = dependabot[bot]
+          - author = renovate[bot]
+      - "#changes-requested-reviews-by = 0"
+      - -draft
+    actions:
+      merge:
+        method: squash
+
+  - name: Request review from maintainer on new PRs
+    conditions:
+      - -draft
+      - "#review-requested = 0"
+      - "#approved-reviews-by = 0"
+    actions:
+      request_reviews:
+        users:
+          - proinsias
+
+  - name: Delete head branch after merge
+    conditions:
+      - merged
+    actions:
+      delete_head_branch: {}
+
+  - name: Label WIP pull requests
+    conditions:
+      - title ~= (?i)\bwip\b
+    actions:
+      label:
+        add:
+          - do-not-merge
