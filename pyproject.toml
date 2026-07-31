@@ -34,3 +34,20 @@ select = ["ALL", "I"]
 fixable = ["ALL"]
 # Optionally, list rules that should never be fixed automatically
 unfixable = []
+# CPY001 (missing copyright notice) is categorically inapplicable: this
+# project is Unlicense (public domain), so no file carries a copyright
+# notice.
+ignore = ["CPY001"]
+
+[tool.ruff.lint.per-file-ignores]
+# copier-python-template/tests/ ships an __init__.py.jinja that only becomes
+# a real tests/__init__.py once copier renders the template, so INP001 is a
+# structural artifact of testing the un-rendered template source, not a real
+# gap. S101 (assert) is the standard, idiomatic way to write pytest tests.
+"copier-python-template/tests/copier_python_template_test.py" = ["INP001", "S101"]
+
+[tool.bandit]
+
+[tool.bandit.assert_used]
+# assert is the standard, idiomatic way to write pytest tests.
+skips = ["*_test.py"]

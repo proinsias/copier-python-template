@@ -3,7 +3,16 @@
 accept = ["100..=103", "200..=299", "403"]
 
 # Exclude URLs and mail addresses from checking (supports regex).
-# exclude = ['^https://www.linkedin.com']
+exclude = [
+    # Template placeholder the user is expected to replace; not a real URL.
+    '^https://github\.com/your/project',
+    # Only resolves from inside a running container's Docker network.
+    '^http://host\.docker\.internal',
+]
+
+# Don't scan this file itself: the patterns above look like URL fragments to
+# lychee's own link extractor and would otherwise be "checked" as broken links.
+exclude_path = ["lychee.toml"]
 
 # Suggest link replacements for broken links, using a web archive.
 suggest = true

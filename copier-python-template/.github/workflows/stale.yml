@@ -18,7 +18,7 @@ jobs:
       pull-requests: write
 
     steps:
-      - uses: actions/stale@v5
+      - uses: actions/stale@v11
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           days-before-close: 5
@@ -26,8 +26,12 @@ jobs:
           exempt-issue-labels: awaiting-approval
           exempt-pr-labels: awaiting-approval
           stale-issue-label: no-issue-activity
-          stale-issue-message: This issue is stale because it has been open 30 days with no activity.
-            Remove stale label or comment or this will be closed in 5 days.
+          stale-issue-message:
+            This issue is stale because it has been open 30 days with no
+            activity. Remove stale label or comment or this will be closed in 5
+            days.
           stale-pr-label: no-pr-activity
-          stale-pr-message: This pull request is stale because it has been open 30 days with no activity.
-            Remove stale label or comment or this will be closed in 5 days.
+          stale-pr-message:
+            This pull request is stale because it has been open 30 days with no
+            activity. Remove stale label or comment or this will be closed in 5
+            days.

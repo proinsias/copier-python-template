@@ -1,211 +1,236 @@
 ---
 default_install_hook_types:
-    - commit-msg
-    - prepare-commit-msg
-    - pre-commit
-    - pre-merge-commit
-    - pre-push
-    - pre-rebase
-    - post-checkout
-    - post-commit
-    - post-merge
-    - post-rewrite
+  - commit-msg
+  - prepare-commit-msg
+  - pre-commit
+  - pre-merge-commit
+  - pre-push
+  - pre-rebase
+  - post-checkout
+  - post-commit
+  - post-merge
+  - post-rewrite
 
 repos:
-    - repo: https://github.com/pre-commit/pre-commit-hooks
-      rev: v6.0.0
-      hooks:
-          # General
-          - id: check-added-large-files
-          - id: check-case-conflict
-          - id: check-docstring-first
-          - id: check-executables-have-shebangs
-          - id: check-merge-conflict
-          - id: check-symlinks
-          - id: check-toml
-          - id: check-xml
-          - id: check-yaml
-          - id: double-quote-string-fixer
-          - id: end-of-file-fixer
-          - id: mixed-line-ending # Replaces or checks mixed line ending.
-          - id: trailing-whitespace
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v6.0.0
+    hooks:
+      # General
+      - id: check-added-large-files
+      - id: check-case-conflict
+      - id: check-docstring-first
+      - id: check-executables-have-shebangs
+      - id: check-merge-conflict
+      - id: check-symlinks
+      - id: check-toml
+      - id: check-xml
+      - id: check-yaml
+      # double-quote-string-fixer is intentionally omitted: it enforces
+      # single-quoted strings, which fights ruff-format's double-quote
+      # default and never converges.
+      - id: end-of-file-fixer
+      - id: mixed-line-ending # Replaces or checks mixed line ending.
+      - id: trailing-whitespace
 
-          # Json
-          - id: check-json
+      # Json
+      - id: check-json
 
-          # Python
-          - id: check-ast # Check whether files parse as valid python.
-          - id: check-builtin-literals # Require literal syntax when initializing empty or zero Python builtin types.
-          - id: debug-statements # Check for debugger imports and py37+ breakpoint() calls in python source.
-          - id: name-tests-test # Assert that files in tests/ end in _test.py, or optionally test*.py
+      # Python
+      - id: check-ast # Check whether files parse as valid python.
+      - id: check-builtin-literals # Require literal syntax when initializing empty or zero Python builtin types.
+      - id: debug-statements # Check for debugger imports and py37+ breakpoint() calls in python source.
+      - id: name-tests-test # Assert that files in tests/ end in _test.py, or optionally test*.py
 
-    # General
+  # General
 
-    - repo: https://github.com/pre-commit/mirrors-prettier
-      rev: v4.0.0-alpha.8
-      hooks:
-          - id: prettier
-            stages: [pre-commit]
+  - repo: https://github.com/pre-commit/mirrors-prettier
+    rev: v4.0.0-alpha.8
+    hooks:
+      - id: prettier
+        stages: [pre-commit]
 
-    - repo: https://github.com/sirosen/texthooks
-      rev: 0.7.1
-      hooks:
-          - id: fix-smartquotes
-          - id: fix-ligatures
+  - repo: https://github.com/sirosen/texthooks
+    rev: 0.7.1
+    hooks:
+      - id: fix-smartquotes
+      - id: fix-ligatures
 
-    # Git
+  # Git
 
-    - repo: https://github.com/jorisroovers/gitlint
-      rev: v0.19.1
-      hooks:
-          - id: gitlint
+  - repo: https://github.com/jorisroovers/gitlint
+    rev: v0.19.1
+    hooks:
+      - id: gitlint
 
-    # Python
+  # Python
 
-    - repo: https://github.com/astral-sh/uv-pre-commit
-      rev: 0.11.3
-      hooks:
-          # Keep uv.lock file up to date
-          - id: uv-lock
+  - repo: https://github.com/astral-sh/uv-pre-commit
+    rev: 0.11.21
+    hooks:
+      # Keep uv.lock file up to date
+      - id: uv-lock
+        # Update the project's environment
+      - id: uv-sync
+        args:
+          [--dev, --locked, --upgrade]
+          # Audit the project's dependencies
+      - id: uv-audit
+        env:
+          UV_MALWARE_CHECK: "1"
 
-    - repo: https://github.com/ewjoachim/sync-pre-commit-with-uv
-      rev: 1.1.0
-      hooks:
-          # Synchronizes versions between pre-commit and uv
-          - id: sync
+  - repo: https://github.com/tsvikas/sync-with-uv
+    rev: v0.6.0
+    hooks:
+      - id: sync-with-uv
 
-    - repo: https://github.com/RobertCraigie/pyright-python
-      rev: v1.1.408
-      hooks:
-          - id: pyright
-            # Use project venv Python instead of isolated pre-commit venv
-            language: system
+  - repo: https://github.com/RobertCraigie/pyright-python
+    rev: v1.1.408
+    hooks:
+      - id: pyright
+        # Use project venv Python instead of isolated pre-commit venv
+        language: system
+        # copier-python-template/ is un-rendered template source: its imports
+        # (click, dotenv, the package itself) only resolve once copier
+        # renders the template into a real project with its own venv.
+        exclude: |
+          (?x)^copier-python-template/(
+            \{\{\ package_name_py\ \}\}/data/make_dataset\.py|
+            tests/copier_python_template_test\.py
+          )$
 
-    - repo: https://github.com/pre-commit/mirrors-pylint
-      rev: v3.0.0a5
-      hooks:
-          - id: pylint
+  - repo: https://github.com/pre-commit/mirrors-pylint
+    rev: v3.0.0a5
+    hooks:
+      - id: pylint
+        # Same rationale as the pyright exclude above.
+        exclude: |
+          (?x)^copier-python-template/(
+            \{\{\ package_name_py\ \}\}/data/make_dataset\.py|
+            tests/copier_python_template_test\.py
+          )$
 
-    - repo: https://github.com/PyCQA/bandit # Add badge to README!
-      rev: 1.9.4
-      hooks:
-          - id: bandit
-            args: [--configfile, pyproject.toml]
+  - repo: https://github.com/PyCQA/bandit # Add badge to README!
+    rev: 1.9.4
+    hooks:
+      - id: bandit
+        args: [--configfile, pyproject.toml]
 
-    - repo: https://github.com/astral-sh/ruff-pre-commit
-      rev: "v0.15.9"
-      hooks:
-          - id: ruff
-            args: [--fix, --force-exclude, --exit-non-zero-on-fix]
-            types_or: [python, pyi, jupyter, markdown] # Run on notebooks too.
-          - id: ruff-format
-            types_or: [python, pyi, jupyter, markdown] # Run on notebooks too.
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: "v0.15.9"
+    hooks:
+      - id: ruff
+        args: [--fix, --exit-non-zero-on-fix]
+        types_or: [python, pyi, jupyter, markdown] # Run on notebooks too.
+      - id: ruff-format
+        # Markdown formatting needs ruff's (unstable) preview mode, so leave
+        # markdown out of ruff-format and rely on prettier for it instead.
+        types_or: [python, pyi, jupyter]
 
-    - repo: https://github.com/pycqa/pydocstyle
-      rev: 6.3.0
-      hooks:
-          - id: pydocstyle
+  - repo: https://github.com/pycqa/pydocstyle
+    rev: 6.3.0
+    hooks:
+      - id: pydocstyle
 
-    - repo: https://github.com/pre-commit/mirrors-mypy
-      rev: v1.20.0
-      hooks:
-          - id: mypy
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: v1.20.0
+    hooks:
+      - id: mypy
 
-    - repo: https://github.com/jazzband/pip-tools
-      rev: v7.5.3
-      hooks:
-          - id: pip-compile
-            files: ^requirements/production\.(in|txt)$
-            args: [requirements/production.in]
+  - repo: https://github.com/jazzband/pip-tools
+    rev: v7.5.3
+    hooks:
+      - id: pip-compile
+        files: ^requirements/production\.(in|txt)$
+        args: [requirements/production.in]
 
-    - repo: https://github.com/MarcoGorelli/absolufy-imports
-      rev: v0.3.1
-      hooks:
-          - id: absolufy-imports
+  - repo: https://github.com/MarcoGorelli/absolufy-imports
+    rev: v0.3.1
+    hooks:
+      - id: absolufy-imports
 
-    - repo: https://github.com/pre-commit/pygrep-hooks
-      rev: v1.10.0
-      hooks:
-          - id: python-no-log-warn
-          - id: rst-backticks
-          - id: rst-directive-colons
-          - id: rst-inline-touching-normal
-          - id: text-unicode-replacement-char
+  - repo: https://github.com/pre-commit/pygrep-hooks
+    rev: v1.10.0
+    hooks:
+      - id: python-no-log-warn
+      - id: rst-backticks
+      - id: rst-directive-colons
+      - id: rst-inline-touching-normal
+      - id: text-unicode-replacement-char
 
-    - repo: https://github.com/albertas/deadcode
-      rev: 2.4.1
-      hooks:
-          - id: deadcode
+  - repo: https://github.com/albertas/deadcode
+    rev: 2.4.1
+    hooks:
+      - id: deadcode
 
-    # YAML
+  # YAML
 
-    - repo: https://github.com/adrienverge/yamllint
-      rev: v1.38.0
-      hooks:
-          - id: yamllint
-            args: [-c=.yamllint.yml]
+  - repo: https://github.com/adrienverge/yamllint
+    rev: v1.38.0
+    hooks:
+      - id: yamllint
+        args: [-c=.yamllint.yml]
 
-    # Mixed
+  # Mixed
 
-    - repo: https://github.com/jumanjihouse/pre-commit-hooks
-      rev: 3.0.0
-      hooks:
-          # - id: git-dirty  # Configure in .gitignore
-          - id: script-must-have-extension
-          - id: script-must-not-have-extension
+  - repo: https://github.com/jumanjihouse/pre-commit-hooks
+    rev: 3.0.0
+    hooks:
+      # - id: git-dirty  # Configure in .gitignore
+      - id: script-must-have-extension
+      - id: script-must-not-have-extension
 
-    - repo: https://github.com/scop/pre-commit-shfmt
-      rev: v3.13.0-1
-      hooks:
-          - id: shfmt
+  - repo: https://github.com/scop/pre-commit-shfmt
+    rev: v3.13.0-1
+    hooks:
+      - id: shfmt
 
-    - repo: https://github.com/koalaman/shellcheck-precommit
-      rev: v0.11.0
-      hooks:
-          - id: shellcheck
-            args: [--external-sources, --format=gcc, --shell=bash]
+  - repo: https://github.com/koalaman/shellcheck-precommit
+    rev: v0.11.0
+    hooks:
+      - id: shellcheck
+        args: [--external-sources, --format=gcc, --shell=bash]
 
-    - repo: https://github.com/Lucas-C/pre-commit-hooks
-      rev: v1.5.6
-      hooks:
-          - id: remove-crlf
-          - id: remove-tabs
-            exclude: .git/COMMIT_EDITMSG
+  - repo: https://github.com/Lucas-C/pre-commit-hooks
+    rev: v1.5.6
+    hooks:
+      - id: remove-crlf
+      - id: remove-tabs
+        exclude: .git/COMMIT_EDITMSG
 
-    - repo: https://github.com/sirosen/check-jsonschema
-      rev: 0.37.1
-      hooks:
-          - id: check-github-actions
-          - id: check-github-workflows
-          - id: check-readthedocs
+  - repo: https://github.com/sirosen/check-jsonschema
+    rev: 0.37.1
+    hooks:
+      - id: check-github-actions
+      - id: check-github-workflows
+      - id: check-readthedocs
 
-    - repo: local
-      hooks:
-          - id: copier-forbidden-files
-            name: copier_forbidden_files
-            # yamllint disable-line rule:line-length
-            entry:
-                found copier update rejection files; review them and remove them
-                (https://copier.readthedocs.io/en/stable/updating/)
-            language: fail
-            files: \.rej$
+  - repo: local
+    hooks:
+      - id: copier-forbidden-files
+        name: copier_forbidden_files
+        # yamllint disable-line rule:line-length
+        entry:
+          found copier update rejection files; review them and remove them
+          (https://copier.readthedocs.io/en/stable/updating/)
+        language: fail
+        files: \.rej$
 
-    - repo: https://github.com/sirwart/ripsecrets
-      rev: v0.1.11 # Use latest tag on GitHub
-      hooks:
-          - id: ripsecrets
-          # uncomment to check additional patterns
-          # args:
-          # - --additional-pattern 'mytoken*'
-          # - --additional-pattern 'mykey*'
+  - repo: https://github.com/sirwart/ripsecrets
+    rev: v0.1.11 # Use latest tag on GitHub
+    hooks:
+      - id: ripsecrets
+      # uncomment to check additional patterns
+      # args:
+      # - --additional-pattern 'mytoken*'
+      # - --additional-pattern 'mykey*'
 
-    - repo: https://github.com/rhysd/actionlint
-      rev: v1.7.12
-      hooks:
-          - id: actionlint
+  - repo: https://github.com/rhysd/actionlint
+    rev: v1.7.12
+    hooks:
+      - id: actionlint
 
-    - repo: https://github.com/lycheeverse/lychee.git
-      rev: lychee-v0.23.0
-      hooks:
-          - id: lychee
-            args: ["--cache", "--suggest"]
+  - repo: https://github.com/lycheeverse/lychee.git
+    rev: lychee-v0.23.0
+    hooks:
+      - id: lychee
+        args: ["--cache", "--suggest"]

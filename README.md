@@ -1,11 +1,11 @@
 # copier-python-template
 
-[Copier](https://copier.readthedocs.io/en/stable/) template for my python projects.
-
-This template aims at making it easier to configure my python
+[Copier](https://copier.readthedocs.io/en/stable/) template for my python
 projects.
-It uses Copier to keep my projects updated with a unified GH Actions
-structure and configuration.
+
+This template aims at making it easier to configure my python projects. It uses
+Copier to keep my projects updated with a unified GH Actions structure and
+configuration.
 
 ## First usage
 
@@ -25,9 +25,9 @@ structure and configuration.
 
 ## Based on
 
--   [branchvincent/python-template](https://github.com/branchvincent/python-template/).
--   [KyleKing/calcipy_template](https://github.com/KyleKing/calcipy_template/).
--   [Tecnativa/doodba-copier-template](https://github.com/Tecnativa/doodba-copier-template/).
+- [branchvincent/python-template](https://github.com/branchvincent/python-template/).
+- [KyleKing/calcipy_template](https://github.com/KyleKing/calcipy_template/).
+- [Tecnativa/doodba-copier-template](https://github.com/Tecnativa/doodba-copier-template/).
 
 <!--
 

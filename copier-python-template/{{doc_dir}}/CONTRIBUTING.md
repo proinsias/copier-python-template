@@ -1,8 +1,9 @@
 # Contributing
 
-Thanks for taking a look!
-This is primarily a personal project, but Pull Requests and Issues (questions, feature requests, etc.) are welcome.
-If you would like to submit a Pull Request, please open an issue first to discuss what you would like to change.
+Thanks for taking a look! This is primarily a personal project, but Pull
+Requests and Issues (questions, feature requests, etc.) are welcome. If you
+would like to submit a Pull Request, please open an issue first to discuss what
+you would like to change.
 
 ## Pull Requests (PR)
 
@@ -18,14 +19,17 @@ If you would like to submit a Pull Request, please open an issue first to discus
 4. Before submitting the review and pushing, make sure to run `poetry run doit`
 5. Open a new Pull Request
 
-> See the style guide for commit message format ([STYLE_GUIDE](./STYLE_GUIDE.md))
+> See the style guide for commit message format
+> ([STYLE_GUIDE](./STYLE_GUIDE.md))
 
-If you run into any issues, please check to see if there is an open issues or open a new one
+If you run into any issues, please check to see if there is an open issues or
+open a new one
 
 ### Other PR Tips
 
--   Link the issue with `Fixes #N` in the Pull Request body
--   Please add a short summary of `why` the change was made, `what changed`, and any relevant information or screenshots
+- Link the issue with `Fixes #N` in the Pull Request body
+- Please add a short summary of `why` the change was made, `what changed`, and
+  any relevant information or screenshots
 
 ```sh
 # SHA is the SHA of the commit you want to fix

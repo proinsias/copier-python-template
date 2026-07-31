@@ -1,0 +1,6 @@
+# copier-python-template/ is raw, un-rendered copier template source (Jinja
+# placeholders, no rendered pyproject.toml/uv.lock). Its .pre-commit-config.yaml
+# ships as-is into every project generated from this template and expects a
+# real rendered project, so it can't be run standalone here. Exclude it from
+# workspace discovery; the root project's hooks still lint the files inside it.
+copier-python-template/
