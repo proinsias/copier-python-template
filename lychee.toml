@@ -1,6 +1,10 @@
+# See https://github.com/lycheeverse/lychee/blob/master/lychee.example.toml .
+
 # Comma-separated list of accepted status codes for valid links.
 # default: 100..=103,200..=299
 accept = ["100..=103", "200..=299", "403"]
+
+cache = true
 
 # Exclude URLs and mail addresses from checking (supports regex).
 exclude = [
@@ -13,6 +17,17 @@ exclude = [
 # Don't scan this file itself: the patterns above look like URL fragments to
 # lychee's own link extractor and would otherwise be "checked" as broken links.
 exclude_path = ["lychee.toml"]
+
+exclude_loopback = true
+
+github_token = "${LYCHEE_GITHUB_TOKEN}"
+
+# Show host statistics
+host_stats = true
+
+# Enable the checking of fragments in links, both anchor fragments and text fragments.
+# See <https://developer.mozilla.org/en-US/docs/Web/URI/Reference/Fragment/Text_fragments>
+include_fragments = "full"
 
 # Suggest link replacements for broken links, using a web archive.
 suggest = true

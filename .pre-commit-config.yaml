@@ -244,4 +244,4 @@ repos:
     rev: v0.15.1
     hooks:
       - id: lychee
-        args: ["--cache", "--suggest"]
+        args: ["--config", "lychee.toml"]
